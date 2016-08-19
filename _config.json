@@ -1,0 +1,37 @@
+{
+    "host": "127.0.0.1",
+    "port": "3000",
+    "baseUrl": "./",
+    "metadata": {
+        "title": "nest",
+        "description": "The Norton Ebook Standards Toolkit",
+        "creator": "",
+        "identifier": "",
+        "format": "",
+        "type": "",
+        "language": "",
+        "rights": "",
+        "published": "W. W. Norton and Company"
+    },
+    "production": {
+        "baseUrl": "//moria.wwnorton.com/sandbox/evan/nest/"
+    },
+    "directories": {
+        "source": "src",
+        "destination": "build",
+        "temporary": "tmp",
+        "oebps": "OEBPS",
+        "//": "Directories relative to `source` directory",
+        "modules": "_modules",
+        "layouts": "_layouts",
+        "images": "_images",
+        "styles": "_styles",
+        "scripts": "_scripts",
+        "content": "_content",
+        "data": "data"
+    },
+    "entries": {
+        "js": "**/*.js",
+        "css": "**.{sass,scss}"
+    }
+}

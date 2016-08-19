@@ -1,0 +1,10 @@
+{
+  "01": {
+    "keyterms": [ "arguing", "reporting", "tortor" ],
+    "galleries": [ "gal01", "gal02" ]
+  },
+  "02": {
+    "keyterms": [ "thesis", "loremIpsum", "turpis", "id" ],
+    "galleries": [ "gal03" ]
+  }
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "gal01",
+    "title": "Nature Gallery",
+    "images": [
+      "blueberries",
+      "kingfisher",
+      "flowers"
+    ]
+  },
+  {
+    "id": "gal02",
+    "title": "City Gallery",
+    "images": [
+      "building",
+      "skyline",
+      "bridge"
+    ]
+  },
+  {
+    "id": "gal03",
+    "images": [
+      "granTorino",
+      "katyPerry"
+    ]
+  },
+  {
+    "id": "granTorino",
+    "images": [
+      "granTorino"
+    ]
+  },
+  {
+    "id": "katyPerry",
+    "images": [
+      "katyPerry"
+    ]
+  },
+  {
+    "id": "rachelDolezal",
+    "images": [
+      "rachelDolezal"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+//- USAGE: +icon(classes, [text])
+//-   - classes (required): any list of classes separated by a dot (.)
+//-   - text (optional): a text alternative for the icon. highly recommended
+//- EXAMPLE: +icon('glyphicons-ok.second-class', 'Correct!')
+//-   <span class="glyphicons glyphicons-ok" aria-hidden="true"></span>
+//-   <span class="sr-only">Correct!</span>
+
+mixin icon(classes, text)
+  - var classes = (typeof classes === 'undefined') ? [] : (typeof classes === 'string') ? classes.split('.') : classes
+  - var root = false
+  each item in classes
+    - root = (item === 'glyphicons') ? true : false
+  - if (!root) classes.unshift('glyphicons')
+
+  span(class=classes, aria-hidden='true')
+  if (typeof text !== 'undefined')
+    span.sr-only!= text

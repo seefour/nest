@@ -1,0 +1,92 @@
+[
+  {
+    "id": "building",
+    "width": 4800,
+    "height": 3200,
+    "alt": "A New York City skyscraper shot from below. A plane can be seen passing in the distance largely thanks to its long contrail.",
+    "caption": "Art Deco, or Deco, is an influential visual arts design style that first appeared in France just before World War I and began flourishing internationally in the 1920s, 1930s and 1940s before its popularity waned after World War II.",
+    "full": "https://images.unsplash.com/photo-1462774603919-1d8087e62cad",
+    "unsplash": true
+  },
+  {
+    "id": "skyline",
+    "width": 3000,
+    "height": 2000,
+    "alt": "The downtown New York City skyline, with the Freedom Tower in center-frame.",
+    "caption": "City skylines serve as a kind of fingerprint as no two skylines are alike.",
+    "full": "https://images.unsplash.com/photo-1442551382982-e59a4efb3c86",
+    "unsplash": true
+  },
+  {
+    "id": "blueberries",
+    "width": 7952,
+    "height": 5304,
+    "alt": "A close-up shot of blueberries in many small baskets",
+    "caption": "",
+    "full": "https://images.unsplash.com/photo-1460400408855-36abd76648b9",
+    "unsplash": true
+  },
+  {
+    "id": "flowers",
+    "width": 4608,
+    "height": 3456,
+    "alt": "An arrangement of white, pink, and red flowers sit neatly inside a flowering can, with a note hanging off that reads, 'Be My Pumpkin Valentine! Love from Chubby Hubby'",
+    "caption": "",
+    "full": "https://images.unsplash.com/photo-1452827073306-6e6e661baf57",
+    "unsplash": true
+  },
+  {
+    "id": "nebula",
+    "width": 7857,
+    "height": 7462,
+    "alt": "A blue and orange color-enhanced image of a bubbling nebula",
+    "caption": "This Hubble Space Telescope image was released to celebrate Hubble's 26th year in orbit.",
+    "full": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564",
+    "unsplash": true
+  },
+  {
+    "id": "bridge",
+    "width": 5760,
+    "height": 3840,
+    "alt": "The Manhattan bridge is centered in the background, framed on either side by buildings along Washington St. in Brooklyn.",
+    "caption": "The Manhattan Bridge is a suspension bridge that crosses the East River in New York City, connecting Lower Manhattan at Canal Street with Downtown Brooklyn at the Flatbush Avenue Extension.",
+    "full": "https://images.unsplash.com/photo-1440613905118-99b921706b5c",
+    "unsplash": true
+  },
+  {
+    "id": "kingfisher",
+    "height": 2000,
+    "width": 3000,
+    "alt": "A kingfisher perched on a branch",
+    "caption": "The common kingfisher (Alcedo atthis) also known as the Eurasian kingfisher, and river kingfisher, is a small kingfisher with seven subspecies recognized within its wide distribution across Eurasia and North Africa.",
+    "full": "kingfisher_o.jpg",
+    "md": "kingfisher_420x300.jpg"
+  },
+  {
+    "id": "granTorino",
+    "height": 961,
+    "width": 1500,
+    "alt": "Clint Eastwood talks to a Hmong woman and teens. One girls holds two potted plants.",
+    "caption": "<span class='FIG-T-B'><em>Gran Torino</em></span> Both Clint Eastwood&rsquo;s white character and his Hmong neighbors draw conclusions about each other based on race.",
+    "full": "P8.4_fmt.jpeg",
+    "md": "P8.4_fmt.jpeg"
+  },
+  {
+    "id": "katyPerry",
+    "height": 685,
+    "width": 1025,
+    "alt": "Katy Perry in a flowery silk robe with many paper umbrellas arrayed behind her.",
+    "caption": "<span class='FIG-T-B'>Cultural Appropriation</span> For her performance of “Unconditionally” at the American Music Awards, Katy Perry donned a geisha-inspired costume that sparked controversy over her appropriation of Japanese culture.",
+    "full": "P8.14a_fmt.jpeg",
+    "md": "P8.14a_fmt.jpeg"
+  },
+  {
+    "id": "rachelDolezal",
+    "height": 961,
+    "width": 1500,
+    "alt": "Rachel Dolezal stares off.",
+    "caption": "<span class='FIG-T-B'>Rachel Dolezal</span> The former leader of the Spokane, Washington, branch of the NAACP identifies as black despite being born to two white parents.",
+    "full": "P8.14b_fmt.jpeg",
+    "md": "P8.14b_fmt.jpeg"
+  }
+]

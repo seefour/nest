@@ -1,0 +1,30 @@
+// keyterm styles
+$keyterm-background-color:   #fff;
+$keyterm-border-radius:      2px;
+$keyterm-letter-spacing:     1px;
+$keyterm-line-height:        1.4;
+$keyterm-padding-vertical:   8px;
+$keyterm-padding-horizontal: 14px;
+$keyterm-padding:            $keyterm-padding-vertical $keyterm-padding-horizontal;
+$keyterm-shadow:             0 2px 4px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.03);
+$keyterm-root:               'keyterm';
+
+// Bootstrap version
+.popover--#{$keyterm-root} {
+    border-radius: $keyterm-border-radius;
+    box-shadow: $keyterm-shadow;
+    font-family: $font-family-sans-serif;
+    .popover-title {
+        background-color: $keyterm-background-color;
+        border-bottom: none;
+        font-weight: bold;
+        letter-spacing: $keyterm-letter-spacing;
+        padding: $keyterm-padding;
+        padding-bottom: 0;
+    }
+    .popover-content {
+        line-height: $keyterm-line-height;
+        padding: $keyterm-padding;
+        padding-top: 0;
+    }
+}

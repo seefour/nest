@@ -1,0 +1,32 @@
+$gallery-root: 'pswp-gallery';
+
+.#{$gallery-root} {
+  display: flex;
+  flex-flow: row wrap;
+
+  &__title {
+    margin-bottom: $grid-gutter-width / 4;
+    font-size: 2rem;
+    width: 100%;
+  }
+
+  &__figure {
+    flex-grow: 1;
+    width: calc(100% / 4);
+
+    margin-right: $grid-gutter-width / 2;
+    margin-bottom: $grid-gutter-width / 2;
+  }
+
+  &__link {
+  }
+
+  &__thumbnail {
+    height: auto;
+    width: 100%;
+  }
+
+  &__caption {
+
+  }
+}

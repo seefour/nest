@@ -1,0 +1,9 @@
+mixin keyterm(termID, mod)
+    each key in book.data.keyterms
+        if (key.id === termID)
+            - var modded = (typeof mod === 'undefined') ? false : true
+            a.keyterm(tabindex=0,role='button',id=termID,class=modded?`keyterm--${mod}`:'')
+                if block
+                    block
+                else
+                    key.term
