@@ -141,7 +141,7 @@ const Annotate = (($) => {
         _handleItem() {
             this._loadJSON((data) => {
                 $.each(data, (i, item) => {
-                    if ($(this._element).attr('id') === item.id) {
+                    if (this._id === item.id) {
                         if (this._config.createGlossary) this._createGlossary(item)
                         this._initTooltip(item)
                     }
