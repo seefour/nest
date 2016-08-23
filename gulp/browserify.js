@@ -62,7 +62,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                         // Ex: 'src/_scripts' --> '/scripts'
                         filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
                     }))
-                    .pipe(plugins.sourcemaps.write('./'))
+                    // .pipe(plugins.sourcemaps.write('./'))
                     .pipe(gulp.dest(dest))
                     // Show which file was bundled and how long it took
                     .on('end', function() {
