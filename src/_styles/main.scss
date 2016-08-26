@@ -4,9 +4,38 @@
 // PhotoSwipe
 @import 'node_modules/photoswipe/src/css/main';
 @import 'node_modules/photoswipe/src/css/default-skin/default-skin';
-@import 'components/photoswipe-ui';
 
 // Custom
+@import 'components/animate';
+@import 'components/photoswipe-ui';
 @import 'components/gallery';
 @import 'components/target';
 @import 'components/keyterm';
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+// just used for demo index.xhtml
+header.nest-header {
+    margin-top: 40px;
+    .media-object {
+        height: 67px;
+        @media (min-width: $screen-sm-min) {
+            height: 74px;
+        }
+    }
+}
+
+.image-list {
+    padding-left: 0;
+    list-style-type: none;
+    li {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    img {
+        max-height: 120px;
+    }
+}

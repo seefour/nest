@@ -1,5 +1,3 @@
-$color-hl: $brand-info;
-
 @mixin link-icon {
     content: "\E051";
     cursor: pointer;
@@ -15,21 +13,24 @@ $color-hl: $brand-info;
         color: inherit;
         position: relative;
         text-decoration: none;
+
         &:after {
             @include link-icon;
-            padding-left: .2em;
+            padding-left: 0.2em;
         }
         @media (min-width: $screen-sm-min) {
             &:focus,
             &:hover {
                 color: inherit;
                 text-decoration: none;
+
                 &:before {
                     @include link-icon;
                     left: -1.2em;
                     position: absolute;
                 }
             }
+
             &:after {
                 display: none;
             }
@@ -38,15 +39,5 @@ $color-hl: $brand-info;
 }
 
 section[id]:target {
-    animation: highlight 2000ms;
-}
-
-@keyframes highlight {
-    0%,
-    100% {
-        background-color: inherit;
-    }
-    35% {
-        background-color: $color-hl;
-    }
+    animation: highlight $animate-duration-complex*4 $animate-timing-enter;
 }

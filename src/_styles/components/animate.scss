@@ -1,0 +1,24 @@
+/* Animation variables and keyframes */
+
+// https://material.google.com/motion/duration-easing.html#duration-easing-common-durations
+$animate-duration-complex: 375ms;
+$animate-duration-enter: 225ms;
+$animate-duration-exit: 195ms;
+
+// https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
+$animate-timing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+$animate-timing-enter: cubic-bezier(0.0, 0.0, 0.2, 1);
+$animate-timing-exit: cubic-bezier(0.4, 0.0, 1, 1);
+$animate-timing-sharp: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+// used on :target events
+$color-hl: $brand-info;
+@keyframes highlight {
+    from, to {
+        background-color: inherit;
+    }
+
+    50% {
+        background-color: $color-hl;
+    }
+}

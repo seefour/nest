@@ -5,64 +5,63 @@ $pswp-root: 'pswp';
 $btn-width: 44px;
 $btn-height: 44px;
 $btn-font-size: 16px;
-
 $sidebar-width: 300px;
-$motion-duration: 3000ms;
-$motion-timing: cubic-bezier(0.4, 0.0, 0.2, 1);
 
 .#{$pswp-root} {
+    // button base
+    &__button {
+        background: none;
+        width: $btn-width;
+        height: $btn-height;
+        color: $gray-lighter;
+        font-size: 16px;
+        line-height: 1;
 
-  // button base
-  &__button {
-    background: none;
-    width: $btn-width;
-    height: $btn-height;
-    color: $gray-lighter;
-    font-size: 16px;
-    line-height: 1;
-    .glyphicons {
-      pointer-events: none;
-    }
-    &--next,
-    &--previous {
-      background: none;
-      top: 50%;
-      width: 32px;
-      height: 30px;
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-    &--previous {
-      left: 6px;
-    }
-    &--next {
-      right: 6px;
-    }
-  }
+        .glyphicons {
+            pointer-events: none;
+        }
 
-  &--svg .#{$pswp-root}__button {
-    @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
-      background-image: none;
-    }
-  }
-
-  // has mouse condition
-  &--has_mouse {
-    .#{$pswp-root}__button {
-      &--next,
-      &--previous {
-        opacity: 1;
-        transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
-      }
-    }
-    // idle condition
-    .#{$pswp-root}__ui--idle {
-      .#{$pswp-root}__button {
         &--next,
         &--previous {
-          opacity: 0;
+            background: none;
+            top: 50%;
+            width: 32px;
+            height: 30px;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
         }
-      }
+
+        &--previous {
+            left: 6px;
+        }
+
+        &--next {
+            right: 6px;
+        }
     }
-  }
+
+    &--svg .#{$pswp-root}__button {
+        @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+            background-image: none;
+        }
+    }
+    // has mouse condition
+    &--has_mouse {
+        .#{$pswp-root}__button {
+            &--next,
+            &--previous {
+                opacity: 1;
+                transition: opacity $animate-duration-complex $animate-timing-sharp;
+            }
+        }
+        // idle condition
+        .#{$pswp-root}__ui--idle {
+            .#{$pswp-root}__button {
+                &--next,
+                &--previous {
+                    opacity: 0;
+                }
+            }
+        }
+    }
 }
