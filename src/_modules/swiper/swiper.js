@@ -19,15 +19,16 @@ const Swiper = (($) => {
      */
 
     const NAME               = 'photoswipe'
-    const VERSION            = '1.0.2'
+    const VERSION            = '1.0.3'
     const DATA_KEY           = 'pswp.gallery'
-    const EVENT_KEY          = `.${DATA_KEY}` // .pswp.gallery
-    const CLASS_KEY          = '.' + `${DATA_KEY}`.replace('.', '-') // .pswp-gallery
+    const EVENT_KEY          = `.${DATA_KEY}`
+    const CLASS_KEY          = `.${DATA_KEY.replace('.', '-')}`
     const JQUERY_NO_CONFLICT = $.fn[NAME]
 
     const Default = {
+        rootClass: CLASS_KEY,   // '.pswp-gallery'
         // use tabtrap.js dependency to handle focus accessibility
-        tabtrap  : true,
+        tabtrap: true,
 
         // PhotoSwipe options
         showHideOpacity: true,
@@ -45,7 +46,13 @@ const Swiper = (($) => {
         BUTTON   : '.pswp__button',
         INFO     : '.pswp__button--info',
         NEXT     : '.pswp__button--next',
-        PREVIOUS : '.pswp__button--previous'
+        PREVIOUS : '.pswp__button--previous',
+
+        // figure>(a>img)+figcaption
+        FIGURE  : 'figure',
+        LINK    : 'a',
+        THUMB   : 'img',
+        CAPTION : 'figcaption'
     }
 
     const Event = {
@@ -74,13 +81,12 @@ const Swiper = (($) => {
             this._isEnabled    = true
             this._globalConfig = this._getConfig(config)
             this._element      = element
-            this._galleryIndex = parseInt($(this._element).attr('data-pswp-uid'), 10)
-            this._pswpEl       = $(this._globalConfig.PSWP)[0]
+            this._pswpEl       = $(Selector.PSWP)[0]
 
             let hash = window.location.hash.substring(1)
             let params = this._parseHash(hash)
 
-            if (params.pid && params.gid === this._galleryIndex) {
+            if (params.pid && params.gid === this._selectorIndex) {
                 let index = params.pid - 1
                 this._openPhotoswipe(index, true)
             }
@@ -137,13 +143,13 @@ const Swiper = (($) => {
 
             this._pswp.destroy()
 
-            this._isEnabled    = null
-            this._element      = null
-            this._galleryIndex = null
-            this._globalConfig = null
-            this._pswpEl       = null
-            this._items        = null
-            this._pswp         = null
+            this._isEnabled     = null
+            this._element       = null
+            this._selectorIndex = null
+            this._globalConfig  = null
+            this._pswpEl        = null
+            this._items         = null
+            this._pswp          = null
         }
 
 
@@ -152,24 +158,8 @@ const Swiper = (($) => {
         _getConfig(config) {
             return $.extend({},
                 this.constructor.Default,
-                this._getSelectors(config),
                 $(this._element).data(),
                 config
-            )
-        }
-
-        _getSelectors(config) {
-            let NAMESPACE = (config === null || typeof config.namespace === 'undefined') ?
-                CLASS_KEY : config.namespace
-            NAMESPACE = (NAMESPACE.charAt(0) !== '.') ? `.${NAMESPACE}` : NAMESPACE
-            return $.extend({},
-                Selector, {
-                    GALLERY : `${NAMESPACE}`,               // <figure>
-                    FIGURE  : `${NAMESPACE}__figure`,       // <figure>
-                    LINK    : `${NAMESPACE}__link`,         // <a>
-                    THUMB   : `${NAMESPACE}__thumbnail`,    // <img>
-                    CAPTION : `${NAMESPACE}__caption`       // <figcaption>
-                }
             )
         }
 
@@ -177,10 +167,12 @@ const Swiper = (($) => {
             $(this._element).on(Event.CLICK_THUMBNAIL, 'a', (event) => {
                 let link = event.currentTarget
 
-                if ($(link).children('img').length !== 1) return false
+                if ($(link).children(Selector.THUMB).length !== 1) return false
 
-                let figure = $(link).parent(this._globalConfig.FIGURE)[0]
-                let index  = $(this._element).children(this._globalConfig.FIGURE).index(figure)
+                let figure = $(link).parent(Selector.FIGURE)[0]
+                let index  = this._isGallery ?
+                    $(this._element).children(Selector.FIGURE).index(figure) :
+                    0
 
                 this._triggerEl = figure
 
@@ -207,10 +199,10 @@ const Swiper = (($) => {
 
             // hide the arrow navigation buttons if the gallery is one image
             if (this._items.length === 1) {
-                $(`${this._globalConfig.NEXT}, ${this._globalConfig.PREVIOUS}`)
+                $(`${Selector.NEXT}, ${Selector.PREVIOUS}`)
                     .addClass('pswp__element--disabled').attr('tabindex', -1)
             } else {
-                $(`${this._globalConfig.NEXT}, ${this._globalConfig.PREVIOUS}`)
+                $(`${Selector.NEXT}, ${Selector.PREVIOUS}`)
                     .removeClass('pswp__element--disabled').attr('tabindex', '')
             }
 
@@ -224,7 +216,9 @@ const Swiper = (($) => {
 
         _buildItems() {
             let items   = []
-            let $figure = $(this._element).find(this._globalConfig.FIGURE)
+            let $figure = this._isGallery ?
+                        $(this._element).find(Selector.FIGURE) :
+                        $(this._element)
 
             for (let i = 0; i < $figure.length; i++) {
                 let item = this._getItem($figure[i])
@@ -235,9 +229,9 @@ const Swiper = (($) => {
         }
 
         _getItem(figure) {
-            let link  = $(figure).find(this._globalConfig.LINK)[0]
-            let thumb = $(figure).find(this._globalConfig.THUMB)[0]
-            let cap   = $(figure).find(this._globalConfig.CAPTION)[0]
+            let link  = $(figure).find(Selector.LINK)[0]
+            let thumb = $(figure).find(Selector.THUMB)[0]
+            let cap   = $(figure).find(Selector.CAPTION)[0]
 
             let size = $(link).attr('data-size').split('x')
             let item = {
@@ -264,6 +258,10 @@ const Swiper = (($) => {
                 item.title = $(cap).html()
             }
 
+            if (!this._isGallery) {
+                item.pid = (item.src.split('/').pop()).split('.').shift()
+            }
+
             item.fig = figure
 
             return item
@@ -273,7 +271,8 @@ const Swiper = (($) => {
             return $.extend({},
                 this._globalConfig, {
                     index: index,
-                    galleryUID: this._galleryIndex,
+                    galleryUID: this._isGallery ? this._selectorIndex : 0,
+                    galleryPIDs: this._isGallery ? false : true,
                     getThumbBoundsFn: (i) => {
                         let thumbnail = $(this._items[i].fig).find('img')[0]
                         return {
@@ -298,16 +297,16 @@ const Swiper = (($) => {
 
             this._pswp.listen('close', () => {
                 let current = this._pswp.getCurrentIndex()
-                let activeFigure = $(this._element).children(this._globalConfig.FIGURE).eq(current)[0]
+                let activeFigure = $(this._element).children(Selector.FIGURE).eq(current)[0]
 
                 // return focus appropriately
                 if ($.contains(this._element, this._triggerEl)) {
                     // to the currently active figure if the triggering click
                     // came from one of the figures in the gallery
-                    $(activeFigure).find(this._globalConfig.LINK).focus()
+                    $(activeFigure).find(Selector.LINK).focus()
                 } else {
                     // to the triggering element otherwise
-                    $(this._triggerEl).focus()
+                    $(this._triggerEl).find(Selector.LINK).focus()
                 }
             })
         }
@@ -335,7 +334,7 @@ const Swiper = (($) => {
         }
 
         _manageUI() {
-            $(this._pswpEl).on(Event.CLICK_BUTTON, this._globalConfig.BUTTON, (event) => {
+            $(this._pswpEl).on(Event.CLICK_BUTTON, Selector.BUTTON, (event) => {
                 let button = event.currentTarget
                 if ($(button).hasClass('pswp__button--next')) this._pswp.next()
                 if ($(button).hasClass('pswp__button--previous')) this._pswp.prev()
@@ -373,8 +372,9 @@ const Swiper = (($) => {
                 }
 
                 if (!data) {
-                    $(this).attr('data-pswp-uid', i + 1)
                     data = new Swiper(this, _config)
+                    data._isGallery = $(this).children(Selector.FIGURE).length ? true : false
+                    data._selectorIndex = i + 1
                     $(this).data(DATA_KEY, data)
                 }
 

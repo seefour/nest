@@ -1,0 +1,6 @@
+block figure
+    figure(class=isGallery?`${root}__figure`:root,itemscope,itemtype="http://schema.org/ImageObject")
+        a(class=`${root}__link`,href=`images/${figure.full}`,itemprop="contentUrl",data-size=figure.width+"x"+figure.height)
+            img(class=`${root}__thumbnail`,src=`images/${figure.md}`,alt=figure.alt,itemprop="thumbnail",aria-describedby=(longDescID)?longDescID:"")
+        if (typeof figure.caption !== 'undefined')
+            figcaption(class=[`${root}__caption`],itemprop="caption")!= figure.caption
