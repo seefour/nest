@@ -5,6 +5,7 @@
 'use strict';
 
 import $ from 'jquery'
+window.$ = $
 
 /* bootstrap plugins */
 import 'bs-affix'
@@ -20,21 +21,20 @@ import 'bs-scrollspy'
 import 'bs-collapse'
 import 'bs-tab'
 
-/* tota11y */
-// import 'tota11y'
-
 /* photoswipe initializer */
-import '../_modules/swiper/swiper.js'
-/* annotation (tooltips) initializer */
-import Annotate from '../_modules/annotate/annotate.js'
-import Segment from '../_modules/segment/segment.js'
+window.Swiper = require('../_scripts/_modules/swiper/swiper.js')
+
+/* annotation (tooltips) initializer. made available to window */
+window.Annotate = require('../_scripts/_modules/annotate/annotate.js')
+
+/* segment initializer. made available to window */
+window.Segment = require('../_scripts/_modules/segment/segment.js')
 
 $(() => {
     // initialize annotate (tooltips) with default options
     $('.keyterm').annotate()
 
-    // initialize photoswipe galleries with default options
+    // initialize photoswipe galleries and figures with default options
     $('.pswp-gallery').photoswipe()
+    $('.pswp-figure').photoswipe()
 })
-
-export {Annotate, Segment}

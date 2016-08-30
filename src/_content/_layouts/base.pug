@@ -8,9 +8,11 @@ block config
     - var baseUrl = config.baseUrl || './'
     - var title = meta.title
     - var desc = meta.description
+    - var custom = { css: false, js: false }
 
 //- add xml doctype manually so pug doesn't think we're using it
 <?xml version="1.0" encoding="utf-8"?>
+
 doctype strict
 
 <!--[if lt IE 9]>
@@ -28,6 +30,8 @@ head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     block stylesheets
         link(rel='stylesheet', href='styles/main.css')
+        if custom.css
+            link(rel='stylesheet', href=`styles/custom/${filename}.css`)
 body
     <!--[if lt IE 9]>
     .alert.alert-warning(role='alert')
@@ -38,5 +42,7 @@ body
 
     block scripts
         script(src='scripts/main.js')
+        if custom.js
+            script(src=`scripts/custom/${filename}.js`)
 
 </html>

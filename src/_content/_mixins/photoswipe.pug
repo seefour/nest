@@ -1,19 +1,19 @@
-mixin photoswipe(galleryID, options)
-  - var unsplashParams = "?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy"
-  - var thumbDims = "&w=420&h=300&fit=crop"
-  - var namespace = (typeof options === 'undefined' || typeof options.namespace === 'undefined') ? 'pswp-gallery' : options.namespace
-  each gallery in book.data._galleries
-    if (gallery.id === galleryID)
-      figure(class=namespace,id=galleryID,itemscope,itemtype="http://schema.org/ImageGallery")
-        if (typeof gallery.title !== 'undefined')
-          figcaption(class=`${namespace}__title`)= gallery.title
-        each imageID in gallery.images
-          each figure in book.data._images
-            if (figure.id === imageID)
-              - var full = (figure.unsplash) ? figure.full + unsplashParams : 'images/' + figure.full
-              - var thumb = (figure.unsplash) ? full + thumbDims : 'images/' + figure.md
-              figure(class=`${namespace}__figure`,itemscope,itemprop="associatedMedia",itemtype="http://schema.org/ImageObject")
-                a(class=`${namespace}__link`,href=full,itemprop="contentUrl",data-size=figure.width+"x"+figure.height)
-                  img(class=`${namespace}__thumbnail`,src=thumb,alt=figure.alt,itemprop="thumbnail",aria-describedby=(longDescID)?longDescID:"")
-                if (typeof figure.caption !== 'undefined')
-                  figcaption(class=[`${namespace}__caption`],itemprop="caption")!= figure.caption
+mixin gallery(galleryID, options)
+    - var isGallery = true
+    - var root = (typeof options === 'undefined' || typeof options.rootClass === 'undefined') ? 'pswp-gallery' : options.rootClass
+    each gallery in book.data._galleries
+        if (gallery.id === galleryID)
+            figure(class=root,id=galleryID,itemscope,itemtype="http://schema.org/ImageGallery")
+                if (typeof gallery.title !== 'undefined')
+                    figcaption(class=`${root}__title`)= gallery.title
+                each imageID in gallery.images
+                    each figure in book.data._images
+                        if (figure.id === imageID)
+                            include ../_layouts/figure
+
+mixin figure(imageID, options)
+    - var isGallery = false
+    - var root = (typeof options === 'undefined' || typeof options.rootClass === 'undefined') ? 'pswp-figure' : options.rootClass
+    each figure in book.data._images
+        if (figure.id === imageID)
+            include ../_layouts/figure

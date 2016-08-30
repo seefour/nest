@@ -1,6 +1,3 @@
-import {Annotate, Segment} from '../main.js'
-const $ = jQuery
-
 $(() => {
     // initialize segment
     let seg = Segment.init()

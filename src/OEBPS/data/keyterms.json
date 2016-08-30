@@ -1,92 +1,106 @@
-[
- {
-   "term": "Arguing",
-   "id": "arguing",
-   "description": "A STRATEGY that can be used in any kind of writing to support a claim with REASONS and EVIDENCE."
- },
- {
-   "term": "Reporting",
-   "id": "reporting",
-   "description": "A writing GENRE that presents information to readers on a subject."
- },
- {
-   "term": "Proposal",
-   "id": "proposal",
-   "description": "A GENRE that argues for a solution to a problem or suggests some action."
- },
- {
-   "term": "Thesis",
-   "id": "thesis",
-   "description": "A statement that identifies the TOPIC and main point of a piece of writing, giving readers an idea of what the text will cover."
- },
- {
-   "term": "Qualify",
-   "id": "qualify",
-   "description": ""
- },
- {
-   "term": "Racism",
-   "id": "racism",
-   "description": "a set of beliefs about the claimed superiority of one racial or ethnic group; used to justify inequality and often rooted in the assumption that differences among groups are genetic"
- },
- {
-   "term": "Prejudice",
-   "id": "prejudice",
-   "description": "an idea about the characteristics of a group that is applied to all members of that group and is unlikely to change regardless of the evidence against it"
- },
- {
-   "term": "Discrimination",
-   "id": "discrimination",
-   "description": "unequal treatment of individuals based on their membership in a social group; usually motivated by prejudice"
- },
- {
-   "term": "Individual discrimination",
-   "id": "individual-discrimination",
-   "description": "discrimination carried out by one person against another"
- },
- {
-   "term": "Institutional discrimination",
-   "id": "institutional-discrimination",
-   "description": "discrimination carried out systematically by institutions (political, economic, educational, and others) that affect all members of a group who come into contact with it"
- },
- {
-   "term": "Privilege",
-   "id": "privilege",
-   "description": "unearned advantage accorded to members of dominant social groups (males, whites, heterosexuals, the physically able, etc.)"
- },
- {
-   "term": "Color-blind racism",
-   "id": "color-blind-racism",
-   "description": "an ideology that removes race as an explanation for any form of unequal treatment"
- },
- {
-   "term": "Race consciousness",
-   "id": "race-consciousness",
-   "description": "an ideology that acknowledges race as a powerful social construct that shapes our individual and social experiences"
- },
- {
-   "term": "Cultural appropriation",
-   "id": "cultural-appropriation",
-   "description": "the adoption of cultural elements belonging to an oppressed group by members of the dominant group, without permission and often for the dominant group’s gain"
- },
- {
-   "term": "Lorem Ipsum",
-   "id": "loremIpsum",
-   "description": "In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as &quot;pain itself&quot;) is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation."
- },
- {
-   "term": "Turpis",
-   "id": "turpis",
-   "description": "<em>m, f</em> (<em>neuter</em> turpe); <em>third declension</em> <ol> <li>ugly, unsightly; foul, filthy</li> <li>(<em>of sound</em>) cacophonous, disagreeable</li> <li>(<em>figuratively</em>) base, infamous, scandalous, dishonorable, shameful, disgraceful</li> </ol>"
- },
- {
-   "term": "Tortor",
-   "id": "tortor",
-   "description": "<em>m</em> (<em>genitive</em> tort&#333;ris); <em>third declension</em> <ol> <li>executioner, torturer</li> </ol>"
- },
- {
-   "term": "Id",
-   "id": "id",
-   "description": "The unconscious impulsive component of the personality in the Freudian psychoanalytic model."
- }
+[{
+    "id": "arguing",
+    "term": "Arguing",
+    "description": "A STRATEGY that can be used in any kind of writing to support a claim with REASONS and EVIDENCE."
+}, {
+    "id": "reporting",
+    "term": "Reporting",
+    "description": "A writing GENRE that presents information to readers on a subject."
+}, {
+    "id": "proposal",
+    "term": "Proposal",
+    "description": "A GENRE that argues for a solution to a problem or suggests some action."
+}, {
+    "id": "thesis",
+    "term": "Thesis",
+    "description": "A statement that identifies the TOPIC and main point of a piece of writing, giving readers an idea of what the text will cover."
+}, {
+    "id": "qualify",
+    "term": "Qualify",
+    "description": ""
+}, {
+    "id": "racism",
+    "term": "Racism",
+    "description": "a set of beliefs about the claimed superiority of one racial or ethnic group; used to justify inequality and often rooted in the assumption that differences among groups are genetic"
+}, {
+    "id": "prejudice",
+    "term": "Prejudice",
+    "description": "an idea about the characteristics of a group that is applied to all members of that group and is unlikely to change regardless of the evidence against it"
+}, {
+    "id": "discrimination",
+    "term": "Discrimination",
+    "description": "unequal treatment of individuals based on their membership in a social group; usually motivated by prejudice"
+}, {
+    "id": "individual-discrimination",
+    "term": "Individual discrimination",
+    "description": "discrimination carried out by one person against another"
+}, {
+    "id": "institutional-discrimination",
+    "term": "Institutional discrimination",
+    "description": "discrimination carried out systematically by institutions (political, economic, educational, and others) that affect all members of a group who come into contact with it"
+}, {
+    "id": "privilege",
+    "term": "Privilege",
+    "description": "unearned advantage accorded to members of dominant social groups (males, whites, heterosexuals, the physically able, etc.)"
+}, {
+    "id": "color-blind-racism",
+    "term": "Color-blind racism",
+    "description": "an ideology that removes race as an explanation for any form of unequal treatment"
+}, {
+    "id": "race-consciousness",
+    "term": "Race consciousness",
+    "description": "an ideology that acknowledges race as a powerful social construct that shapes our individual and social experiences"
+}, {
+    "id": "cultural-appropriation",
+    "term": "Cultural appropriation",
+    "description": "the adoption of cultural elements belonging to an oppressed group by members of the dominant group, without permission and often for the dominant group’s gain"
+}, {
+    "id": "loremIpsum",
+    "term": "Lorem Ipsum",
+    "description": "In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as &quot;pain itself&quot;) is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation."
+}, {
+    "id": "turpis",
+    "term": "Turpis",
+    "description": "<em>m, f</em> (<em>neuter</em> turpe); <em>third declension</em> <ol> <li>ugly, unsightly; foul, filthy</li> <li>(<em>of sound</em>) cacophonous, disagreeable</li> <li>(<em>figuratively</em>) base, infamous, scandalous, dishonorable, shameful, disgraceful</li> </ol>"
+}, {
+    "id": "tortor",
+    "term": "Tortor",
+    "description": "<em>m</em> (<em>genitive</em> tort&#333;ris); <em>third declension</em> <ol> <li>executioner, torturer</li> </ol>"
+}, {
+    "id": "id",
+    "term": "Id",
+    "description": "The unconscious impulsive component of the personality in the Freudian psychoanalytic model."
+}, {
+    "id": "sociobiology",
+    "term": "Sociobiology",
+    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+}, {
+    "id": "multiculturalism",
+    "term": "Multiculturalism",
+    "description": "Pariatur aliquam, reprehenderit explicabo."
+}, {
+    "id": "labor",
+    "term": "Labor",
+    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}, {
+    "id": "fact",
+    "term": "Facts",
+    "description": "Commodi delectus aperiam perferendis porro harum beatae vero possimus rem."
+}, {
+    "id": "constraint",
+    "term": "Constraint",
+    "description": "Blanditiis maiores enim culpa, deserunt illo repellat dolores exercitationem aut assumenda error in, quo."
+}, {
+    "id": "rationalization",
+    "term": "Rationalization",
+    "description": "Dolorum tenetur sequi tempore mollitia facilis reprehenderit minus optio voluptatibus praesentium placeat."
+}, {
+    "id": "organic solidarity",
+    "term": "Organic Solidarity",
+    "description": "Saepe a sint ad repellendus, aut eos tenetur reprehenderit impedit quos deleniti doloribus rerum, recusandae non, perspiciatis repudiandae at velit officia odit enim sapiente fugiat ab dolores"
+}, {
+    "id": "capitalism",
+    "term": "Capitalism",
+    "description": "An economic system based on the private ownership of wealth, which is in-vested and reinvested in order to produce profit."
+}
 ]

@@ -1,32 +1,45 @@
 extends _layouts/base
 
 append config
+    - var custom = { css: true, js: true }
 
 block content
     .container
-        main
-            h1 The Norton Ebook Standards Toolkit (nest) #[span.small #[code.version v0.9.0]]
-            figure
-                img.logo(src="images/c4-180.png")
-
-            section
-                h2 Features
-                ul
-                    li Take advantage of #[a(href="https://github.com/pugjs/pug") Pug] templating (formerly #[a(href="http://jade-lang.com/") Jade]).
-                    li Write CSS with #[a(href="http://sass-lang.com/") SASS].
-                    li Utilize ES6/2015 JavaScript with #[a(href="https://babeljs.io/") Babel].
-                    li Rapidly develop, build, and test with #[a(href="http://gulpjs.com/") Gulp].
-                h2 Front-End Libraries
-                ul
-                    li #[a(href="https://github.com/twbs/bootstrap-sass/") Bootstrap-Sass] #[code.version v3.3.7]
-                        ul
-                            li #[a(href="https://jquery.com/") jQuery] #[code.version v3.1.0]
-                    li #[a(href="http://photoswipe.com/") PhotoWwipe] #[code.version v4.1.1]
-
-            section
-                h2 Demo Chapters
-                ul
-                    li #[a(href="fieldguide4.xhtml") FIELDGUIDE4]
-                    li #[a(href="realworld5.xhtml") REALWORLD5]
-                    li #[a(href="demo.xhtml") DEMO]
-                    li #[a(href="badheadings.xhtml") BAD HEADINGS]
+        header.nest-header
+            .media
+                figure.media-left
+                    img.media-object(src="images/c4-180.png")
+                .media-body
+                    h1.media-heading nest
+                    p.lead The Norton Ebook Standards Toolkit
+        a(href="#highlight-test") Highlight! #[+icon('glyphicons-thumbs-up')]
+        section#highlight-test
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam (#[a(href="#&gid=3&pid=nebula-1382") Nebula]), quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident (#[a(href="#&gid=1&pid=2") Figure 2]), sunt in culpa qui officia deserunt mollit anim id est laborum.
+        section
+            +gallery('gal01')
+            +gallery('gal02')
+            +figure('nebula')
+            +figure('bridge')
+    include _layouts/pswp
+        //- main
+            h2 Demo Chapters
+            ul.image-list
+                li
+                    figure
+                        a(href="fieldguide4.xhtml")
+                            img.img-responsive(src="images/9780393264388_300.jpg")
+                            figcaption.sr-only FIELDGUIDE4
+                li
+                    figure
+                        a(href="realworld5.xhtml")
+                            img.img-responsive(src="images/9780393264302_198.jpg")
+                            figcaption.sr-only REALWORLD5
+                li
+                    figure
+                        a(href="essentialsofsoc6.xhtml")
+                            img.img-responsive(src="images/9780393937459_198.jpg")
+                            figcaption.sr-only ESSENTIALSOFSOC6
+                li
+                    a(href="demo.xhtml") DEMO
+                li
+                    a(href="badheadings.xhtml") BAD HEADINGS

@@ -1,0 +1,25 @@
+@import "../_vendor/bootstrap/bootstrap-variables";
+
+/* just used for demo index.xhtml */
+header.nest-header {
+    margin-top: 40px;
+    .media-object {
+        height: 67px;
+        @media (min-width: $screen-sm-min) {
+            height: 74px;
+        }
+    }
+}
+
+.image-list {
+    padding-left: 0;
+    list-style-type: none;
+    li {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    img {
+        max-height: 120px;
+    }
+}
