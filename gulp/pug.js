@@ -60,16 +60,19 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         return gulp.src(path.join(dirs.source, dirs.content, '*.{jade,pug}'))
             .pipe(plugins.changed(dest))
             .pipe(plugins.plumber())
-            .pipe(plugins.pug({
-                pug: pug,
-                pretty: true,
-                locals: {
-                    config: config,
-                    debug: true,
+            .pipe(plugins.data(function(file) {
+                return {
                     book: {
                         data: bookData
-                    }
+                    },
+                    config: config,
+                    debug: true,
+                    filename: path.basename(file.path, path.extname(file.path))
                 }
+            }))
+            .pipe(plugins.pug({
+                pug: pug,
+                pretty: true
             }))
             .pipe(plugins.htmlmin({
                 collapseBooleanAttributes: false,
@@ -83,7 +86,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             .pipe(plugins.rename(function(path){
                 path.extname = '.xhtml'
             }))
-            // .pipe(plugins.replace(type.strict, type.html))
+            .pipe(plugins.replace(type.strict, type.html))
             .pipe(gulp.dest(dest))
             .on('end', browserSync.reload);
     });
