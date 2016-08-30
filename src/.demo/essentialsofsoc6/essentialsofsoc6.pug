@@ -1,0 +1,362 @@
+extends _layouts/base
+
+append config
+    - var metaTitle = "Essentials of Sociology"
+    - var title     = metaTitle + " | Chapter 2"
+    - var filename  = "essentialsofsoc6"
+    - var ordinal   = "2"
+    - var customCSS = `${filename}.css`
+    - var customJS  = `${filename}.js`
+
+block content
+    section.division1(epub:type='subchapter')
+        div(data-role='page')
+            .container.ui-content(role='main')
+                .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                    h3.H1(epub:type='title') How Does Human Culture Develop?
+                    .LERN-GUD
+                        p.LGI
+                            img(style='width:25px;', src='images/BA.jpg', alt='img')
+                        p.LG(epub:type='topic-sentence')
+                            | Begin to understand how both biological and cultural factors influence our behavior. Learn the ideas of sociobiology and how others have tried to refute these ideas by emphasizing cultural differences.
+                    p.TXT1
+                        | Human culture and human biology are closely intertwined. Understanding how culture is related to the physical evolution of the human species can help us better understand the central role that culture plays in shaping our lives.
+                    section.division2(epub:type='subchapter')
+                        h4#ch2-2.H2(epub:type='title') Early Human Culture: Adaptation to Physical Environment
+                        p.TXT1
+                            | Scientists believe that the first humans evolved from apelike creatures on the African continent some four million years ago. Their conclusion is based on archaeological evidence and knowledge of the close similarities in blood chemistry and genetics between chimpanzees and humans. The first evidence of humanlike culture dates back only two million years. In these early cultures, humans fashioned stone tools, derived sustenance by hunting animals and gathering nuts and berries, harnessed the use of fire, and established a highly cooperative way of life. Because early humans planned their hunts, they must also have had some ability for abstract thought.
+                        p.TXT
+                            | Culture enabled early humans to compensate for their physical limitations, such as lack of claws, sharp teeth, and running speed, relative to other animals (Deacon 1998). Culture freed humans from dependence on the instinctual and genetically determined set of responses to the environment characteristic of other species. The larger, more complex human permitted a greater degree of adaptive learning in dealing with major environmental changes such as the Ice Age. For example, humans figured out how to build fires and sew clothing for warmth. Through greater flexibility, humans were able to survive unpredictable challenges in their surroundings and shape the world with their ideas and their tools.
+                        p.TXT
+                            | Yet early humans were closely tied to their physical environment, since they still lacked the technological ability to modify their immediate surroundings significantly (Bennett 1976; Harris 1975, 1978, 1980). Their ability to secure food and make clothing and shelter depended largely on the physical resources that were close at hand. Cultures in different environments varied widely as a result of adaptations by which people fashioned their cultures to be suitable to specific geographic and climatic conditions. For example, the cultures developed by desert dwellers, where water and food were scarce, differed significantly from the cultures that developed in rain forests, where such natural resources abounded. Human inventiveness spawned a rich tapestry of cultures around
+                            span#page_17(epub:type='pagebreak')
+                            | the world. As you will see at the conclusion of this chapter, however, modern technology and other forces of globalization pose both challenges and opportunities for future global cultural diversity.
+                    section.division2(epub:type='subchapter')
+                        h4#ch2-3.H2(epub:type='title') Nature or Nurture
+                        p.TXT1
+                            | Because humans evolved as a part of the world of nature, it would seem logical to assume that human thinking and behavior are the result of biology and evolution. In fact, one of the oldest and most enduring controversies in the social sciences is the “nature/nurture” debate: Are we shaped by our biology or are we products of learning through life’s experiences—that is, of nurture? Biologists and some psychologists emphasize biological factors in explaining human thinking and behavior. Sociologists, not surprisingly, stress the role of learning and culture. They are also likely to argue that because human beings are capable of making conscious choices, neither biology nor culture wholly determines human behavior.
+                        p.TXT
+                            | The nature/nurture debate has raged for more than a century. In the 1930s and 1940s, many social scientists focused on biological factors, with some researchers seeking (unsuccessfully), for example, to prove that a person’s physique determined his or her personality. In the 1960s and 1970s, scholars in different fields emphasized culture. For example, social psychologists argued that even the most severe forms of mental illness were the result of the labels that society attaches to unusual behavior rather than of biochemical processes (Scheff 1966). Today, partly because of new understandings in genetics and brain neurophysiology, the pendulum is again swinging toward the side of biology.
+            .FIGB
+                .container.ui-content(role='main')
+                    .col-xs-12.col-sm-12.col-md-12
+                        .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                            section.division2(epub:type='subchapter')
+                                figure
+                                    figcaption
+                                        p.FN(epub:type='label') GLOBAL MAP 12.2.2
+                                        p.FT Global Religious Diversity, 2010
+                                        p.FCAP
+                                            | Throughout the chapter, we concentrate on how social change has affected cultural development. One instance of this is the effect of technology and globalization on the many cultures of the world. Throughout the chapter, we concentrate on how social change has affected cultural development. One instance of this is the effect of technology and globalization on the many cultures of the world.
+                                    +figure('GL12-2-2')
+            section.division2(epub:type='subchapter')
+                .container.ui-content(role='main')
+                    .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                        p.TXT
+                            | The resurgence of biological explanations for human behavior began in the 1970s, when the evolutionary biologist Edward O. Wilson published Sociobiology: The New Synthesis (1975). The term #[+keyterm('sociobiology') sociobiology] refers to the application of biological principles to explain the social activities of animals, including human beings. Using studies of insects and other social creatures, Wilson argued that genes influence not only physical traits but behavior as well. In most species, for example, males are larger and more aggressive than females and tend to dominate the “weaker sex.” Some suggest that genetic factors explain why, in all human societies that we know of, men tend to hold positions of greater authority than women.
+                        p.TXT
+                            | Given the immense cultural diversity and number of subcultures within the United States, a more appropriate metaphor than the assimilationist “melting pot” might be the culturally diverse “salad bowl,” in which all the various ingredients, though mixed together, retain some of their original flavor and integrity, contributing to the richness of the salad as a whole. This viewpoint, termed #[+keyterm('multiculturalism') multiculturalism], calls for respecting cultural diversity.
+                        section.division3(epub:type='subchapter')
+                            h5.H3(epub:type='title')
+                                span#page_18(epub:type='pagebreak')
+                                | CULTURAL IDENTITY AND ETHNOCENTRISM
+                            p.TXT1
+                                | Every culture displays its own unique patterns of behavior, which seem alien to people from other cultural backgrounds. If you have traveled abroad, you are probably familiar with the sensation that can result when you find yourself in a new culture.
+                            ol.NL
+                                li
+                                    span.normal1
+                                        | A clear-cut hierarchy of authority, such that tasks in the organization are distributed as “official duties.” Each higher office controls and supervises the one below it in the hierarchy, thus making coordinated decision making possible.
+                                li
+                                    span.normal1
+                                        | Written rules govern the conduct of officials at all levels of the organization. The higher the office, the more the rules tend to encompass a wide variety of cases and demand flexibility in their interpretation.
+                                li
+                                    span.normal1
+                                        | Officials are full time and salaried. Each job in the hierarchy has a definite and fixed salary attached to it. Promotion is possible on the basis of capability, seniority, or a mixture of the two.
+                                li
+                                    span.normal1
+                                        | There is a separation between the tasks of an official within the organization and his or her life outside.
+                            p.TXT
+                                | In cultures where clitoridectomies have been practiced for generations, they are regarded as a normal, even expected, practice. A study of two thousand men and women in two Nigerian communities found that nine out of ten women interviewed had undergone clitoridectomies in childhood and that the large majority favored the procedure for their own daughters, primarily for cultural reasons; they would be viewed as social outcasts if they did not have the procedure. Yet a significant minority believed that the practice should be stopped (Ebomoyi 1987). Clitoridectomies are regarded with abhorrence by most people from other cultures and by a growing number of women in the cultures where they are practiced (El Dareer 1982; Johnson-Odim 1991; Lightfoot-Klein 1989).
+                            p.TXT
+                                | Witkowski and Brown 1982). Expert skiers or snowboarders, for example, use terms such as black ice, corn, powder, and packed powder to describe different snow and ice conditions.
+                            blockquote
+                                p.EXT
+                                    span.bold
+                                        span.italic ARE YOU ADVENTUROUS?
+                                p.EXT
+                                    span.italic
+                                        | Researcher wishes to contact adventurous, carefree people who’ve led exciting, impulsive lives. If you’re the kind of person who’d do almost anything for a dare, call 337-XXXX anytime.
+                            p.TXT
+                                | Language also helps give permanence to a culture and an identity to a people. Language outlives any particular speaker or writer, affording a sense of history and cultural continuity, a feeling of “who we are.” One of the central paradoxes of our time is that despite the globalization of the English language through the Internet and other forms of global media, local attachments to language persist, often out of cultural pride. For example, the French-speaking residents of the Canadian province of Quebec are so passionate about their linguistic heritage that they often refuse to speak English, the dominant language of Canada, and periodically seek political independence from the rest of Canada.
+                .FIGB
+                    .container.ui-content(role='main')
+                        .col-xs-12.col-sm-12.col-md-12
+                            .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                                p.TN(epub:type='title') TABLE 1.1
+                                p.TT Interpreting Modern Development
+                                .naTv
+                                    table.TAB
+                                        tbody
+                                            tr
+                                                td(style='vertical-align:top;')
+                                                    p.TCH4 Durkheim
+                                                td(style='vertical-align:top;')
+                                                    p.TRN 1.
+                                                td(style='vertical-align:top;')
+                                                    p.T-TXT
+                                                        | The main dynamic of modern development is the #[+keyterm('labor') labor] as a basis for social cohesion and #[+keyterm('organic solidarity') organic solidarity].
+                                            tr
+                                                td.border-bottom1
+                                                td.border-bottom1
+                                                    p.TRN 2.
+                                                td.border-bottom1
+                                                    p.T-TXT
+                                                        | Durkheim believed that sociology must study #[+keyterm('facts') facts] as things, just as science would analyze the natural world. His study of suicide led him to stress the important influence of social factors, qualities of a society external to the individual, on a person’s actions. Durkheim argued that society exerts #[+keyterm('constraint') constraint] over our actions.
+                                            tr
+                                                td(style='vertical-align:top;')
+                                                    p.TCH4 Marx
+                                                td(style='vertical-align:top;')
+                                                    p.TRN 1.
+                                                td(style='vertical-align:top;')
+                                                    p.T-TXT
+                                                        | The main dynamic of modern development is the expansion of #[+keyterm('capitalism') capitalism]. Rather than being cohesive, society is divided by class differences.
+                                            tr
+                                                td.border-bottom1
+                                                td.border-bottom1
+                                                    p.TRN 2.
+                                                td.border-bottom1
+                                                    p.T-TXT
+                                                        | Marx believed that we must study the divisions within a society that are derived from the economic inequalities of capitalism.
+                                            tr
+                                                td(style='vertical-align:top;')
+                                                    p.TCH4 Weber
+                                                td(style='vertical-align:top;')
+                                                    p.TRN 1.
+                                                td(style='vertical-align:top;')
+                                                    p.T-TXT
+                                                        | The main dynamic of modern development is the #[+keyterm('rationalization') rationalization] of social and economic life.
+                                            tr
+                                                td.border-bottom2
+                                                td.border-bottom2
+                                                    p.TRN 2.
+                                                td.border-bottom2
+                                                    p.T-TXT
+                                                        | Weber focused on why Western societies developed so differently from other societies. He also emphasized the importance of cultural ideas and values on social change.
+            .container.ui-content(role='main')
+                .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                    section.division2(epub:type='subchapter')
+                        .DIG(epub:type='sidebar')
+                            .BXB
+                                a.btn.btn-hide#TQAT3(role="button",data-toggle="collapse",href="#tqat1-ans",aria-expanded="false",aria-controls="tqat1-ans") Show
+                            #tqat1-ans.TQAT.collapse
+                                h3.DLT(epub:type='title') What Do Our Secrets Tell Us About Cultural Norms and Values?
+                                p.DLTXT1
+                                    | Only a few years ago the digital divide was a chasm—a large gap in Internet use that reflected differences in socioeconomic status. At the turn of the millennium, only 34 percent of those with an annual income under $30,000 used the Internet, compared with 81 percent of households earning more than $79,000. An even larger gap resulted from differences in education, with barely one out of every five high school dropouts using the Internet, compared with nearly four out of every five college graduates (Rainie, 2015).
+                                p.DLTXT
+                                    | By 2015 these gaps had narrowed considerably. While nearly all households earning more than $75,000 today use the Internet, three-quarters of those earning under $30,000 do so as well. The educational gap has fallen by a comparable amount, and even 60 percent of those over sixty-five are now online. The Internet has become as commonplace as the telephone (Rainie, 2015).
+                                p.DLTXT
+                                    | Or has it? Not all forms of Internet use are equal. While almost two-thirds of American adults now own a smartphone, there remains a sizeable age gap in ownership, as well as smaller (but significant) gaps based on education and income. For example, 85 percent of young adults (those between the ages of eighteen and twenty-nine) own a smartphone, compared with only 27 percent of adults over sixty-five. Gaps remain between college grads (78 percent of whom own smartphones) and those with a high school education or less (52 percent), and between those with household incomes of over $75,000 (84 percent) and those earning under $30,000 (50 percent); 44 percent of the latter, in fact, report having lost their service at one time because of financial constraints (Smith, 2015a).
+                                p.DLTXT
+                                    | Such disparities matter because Americans are increasingly relying on smartphones for more than texting their friends or posting photos on Instagram. For example, more than half (53 percent) of young adults report having used a smartphone in a job search, and those who are college educated or have higher incomes are the most likely to do so. While it may not come as a surprise that most job-seeking smartphone use is for such basic activities as browsing job listings or contacting employers, nearly half have also used their smartphones to actually fill out a job application. Interestingly, those who lack a college education are far more likely to use their smartphone to fill out a job application (61 percent) than those who have a college degree (37 percent). Similarly, a third of those with a high school education (or less) rely on their smartphone to create a resume or cover letter, compared with only one-tenth of those with college degrees. The reason for these differences is simple: job-seekers who never went to college are far less likely to have broadband Internet at home (Smith, 2015b).
+                                p.DLTXT
+                                    | The proliferation of smartphones may indeed level the playing field, enabling poorer, less educated adults to compensate for lack of broadband access. On the other hand, since those who are lower on the socioeconomic ladder are also less likely to own a functioning smartphone, they can be disadvantaged when seeking a job. Moreover, there are clear challenges to using a smartphone to fill out a job application, assemble a resume, or write an effective job letter. The digital divide may be narrowing, but inequalities still remain.
+                                table.BXT
+                                    colgroup
+                                        col(style='width:50%;')
+                                        col(style='width:50%;')
+                                    tr
+                                        td(style='padding-right:10px;vertical-align:top;')
+                                            p.TX1
+                                                img(style='width:350px;', src='images/Pg_19.jpg', alt='')
+                                        td(style='padding-top:20px;padding-right:10px;vertical-align:top;')
+                                            p.DLCAP
+                                                img(src='images/arrow.jpg', alt='')
+                                                br
+                                                br
+                                                br
+                                                | Our secrets powerfully reveal the social norms that govern our behavior. Postcards submitted to PostSecret, an ongoing community art project, highlight how certain behaviors like theft, eating disorders, and infidelity are stigmatized.
+                        p.TXT(style='margin-top:20px;')
+                            | Most traditional (premodern) civilizations were also empires: They achieved their size through the conquest and incorporation of other peoples (Kautsky 1982). This was difference among members of the society in the number or kinds of material possessions; there were no divisions of rich and poor. The
+                            span#page_20(epub:type='pagebreak')
+                            | material goods they needed were limited to weapons for hunting, tools for digging and building, traps, and cooking utensils. Differences of position or rank tended to be limited to age and gender; men were almost always the hunters.
+            .FIGB
+                .container.ui-content(role='main')
+                    .col-xs-12.col-sm-12.col-md-12
+                        .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                            figure
+                                figcaption
+                                    p.FN(epub:type='label') FIGURE 6.3
+                                    p.FT Crime Rates in the United States, 1986-2012
+                                    +figure('Pg_20')
+            .container.ui-content(role='main')
+                .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                    section.division2(epub:type='subchapter')
+                        h4#ch2-5.H2(epub:type='title') Traditional Societies or Civilizations
+                        p.TXT1
+                            | From about 6000 BCE onward, we find evidence of societies larger than any that existed before and that contrast in distinct ways with earlier types. These societies were based on the development of cities, led to pronounced inequalities of wealth and power, and were ruled by kings or emperors. Because writing was used and science and art flourished, these societies are often called “civilizations.”
+                        p.TXT
+                            | The elders—the oldest and most experienced men in the community—usually had an important say in major decisions affecting the group. But just as there was little variation in wealth among members, power was more equally shared than in larger types of society. Hunting and gathering societies were usually participatory rather than competitive.
+                        figure.fig
+                            p.image
+                                img.img100(src='images/Pg_20a.jpg')
+                            figcaption
+                                p.CAP1
+                                    img(style='width:25px;', src='images/FA.jpg')
+                                p.CAP
+                                    | Breakfast at Owls Nest Camp, Bohemian Grove, California July 23, 1967. Members of the elite campground and club, which includes executives and U.S. presidents, discuss politics over a Gin Fuzz breakfast.
+                        p.TXT
+                            span#page_21(epub:type='pagebreak')
+                            | And over 90 percent of people live in towns and cities, where most jobs are to be found and new job opportunities created. The largest cities are vastly greater in size than the urban settlements found in traditional civilizations. In the cities, social life becomes more impersonal and anonymous than before, and many of our day-to-day encounters are with strangers rather than with individuals known to us. Large-scale organizations, such as business corporations or government agencies, come to influence the lives of virtually everyone.
+            .FIGB
+                .container.ui-content(role='main')
+                    .col-xs-12.col-sm-12.col-md-12
+                        .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                            p.TN(epub:type='label') TABLE 1.3
+                            p.TT Three of the Main Methods Used in Sociological Research
+                            .naTv
+                                table.TAB
+                                    colgroup
+                                        col(style='width:25%')
+                                        col(style='width:35%')
+                                        col(style='width:40%')
+                                    thead
+                                        tr
+                                            td.border-bottom1(style='vertical-align:top;')
+                                                p.TCH RESEARCH METHOD
+                                            td.border-bottom1right(style='vertical-align:top;')
+                                                p.TCH STRENGTHS
+                                            td.border-bottom1right(style='vertical-align:top;')
+                                                p.TCH LIMITATIONS
+                                    tbody
+                                        tr
+                                            td.border-bottom1
+                                                p.TCH4 Ethnography
+                                            td.border-bottom1right
+                                                p.T-TXT Usually generates richer and more in-depth information than other methods.
+                                                p.T-TXT Ethnography can provide a broader understanding of social processes.
+                                            td.border-bottom1right
+                                                p.T-TXT Can be used to study only relatively small groups or communities.
+                                                p.T-TXT
+                                                    | Findings might apply only to groups or communities studied; not easy to generalize on the basis of a single fieldwork study.
+                                        tr
+                                            td.border-bottom1
+                                                p.TCH4 Surveys
+                                            td.border-bottom1right
+                                                p.T-TXT Make possible the efficient collection of data on large numbers of individuals.
+                                                p.T-TXT Allow for precise comparisons to be made among the answers of respondents.
+                                            td.border-bottom1right
+                                                p.T-TXT
+                                                    | Material gathered may be superficial; if questionnaire is highly standardized, important differences among respondents’ viewpoints may be glossed over.
+                                                p.T-TXT
+                                                    | Responses may be what people profess to believe rather than what they actually believe.
+                                        tr
+                                            td.border-bottom2
+                                                p.TCH4 Surveys
+                                            td.border-bottom1right1
+                                                p.T-TXT Influence of specific variables can be controlled by the investigator.
+                                                p.T-TXT Are usually easier for subsequent researchers to repeat.
+                                            td.border-bottom1right1
+                                                p.T-TXT Many aspects of social life cannot be brought into the laboratory.
+                                                p.T-TXT Responses of those studied may be affected by the experimental situation.
+            .container.ui-content(role='main')
+                .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+                    section.division2(epub:type='subchapter')
+                        p.TXT
+                            | The application of industrial technology has been by no means limited to peaceful processes of economic development. From the earliest phases of industrialization, modern production processes have been put to military use, and this has radically altered ways of waging war, creating weaponry and modes of military organization much more advanced than those of nonindustrial cultures. Together, superior economic strength, political cohesion, and military superiority account for the seemingly irresistible spread of Western ways of life across the world over the past two centuries.
+                    section.division2(epub:type='subchapter')
+                        h4#ch2-6.H2(epub:type='title') Globalization and Local Cultures
+                        p.TXT1
+                            | From the seventeenth to the early twentieth century, the Western countries established colonies in numerous areas previously occupied by traditional societies, using their superior military strength where necessary. Although virtually all these colonies have now attained their independence, colonialism was central to shaping the social map of the globe as we know it today. In some regions, such as North America, Australia, and New Zealand, which were only thinly populated by hunting and gathering or pastoral communities, Europeans became the majority population. In other areas, including much of Asia, Africa, and South America, the local populations remained in the majority.
+                        p.TXT
+                            | Societies of the first of these two types, including the United States, have become industrialized. Those in the second category are mostly at a much lower level of industrial development and are often referred to as less-developed societies, or the developing world. Such societies include China, India, most African countries (such as Nigeria, Ghana, and Algeria), and those in South America (such as Brazil, Peru, and Venezuela). Because many of these societies are situated south of the United States and Europe, they are sometimes referred to collectively as the South, and contrasted to the wealthier, industrialized North.
+                        p.TXT
+                            | The industrialized societies were the first nation-states to come into existence. Nation-states are political communities with clearly delimited borders dividing them from one another, rather than the vague frontier areas that used to separate traditional states. Nation-state governments have extensive powers over many aspects of citizens’ lives, framing laws that apply to all those living within their borders. The United States is a nation-state, as are virtually all other societies in the world today.
+                        p.TXT
+                            | The application of industrial technology has been by no means limited to peaceful processes of economic development. From the earliest phases of industrialization, modern production processes have been put to military use, and this has radically altered ways of waging war, creating weaponry and modes of military organization much more advanced than those of nonindustrial cultures. Together, superior economic strength, political cohesion, and military superiority account for the seemingly irresistible spread of Western ways of life across the world over the past two centuries.
+                        p.TXT  
+                        .SAT(epub:type='sidebar')
+                            .BXB
+                                h3.DLH(epub:type="label")
+                                    a.btn-hide#TQAT3(role="button",data-toggle="collapse",href="#tqat3-ans",aria-expanded="false",aria-controls="tqat3-ans") DIGITAL LIFE
+                                        +icon('glyphicons-chevron-up.pull-right')
+                            #tqat3-ans.collapse
+                                p.BXTX1
+                                    | Research in sociology often makes use of statistical techniques in the analysis of findings. Some are highly sophisticated and complex, but those most often used are easy to understand. The most common are
+                                    span.blue measures of central tendency
+                                    |  (ways of calculating averages) and correlation coefficients (measures of the degree to which one variable relates consistently to another). There are three methods of calculating averages, each of which has certain advantages and shortcomings. Take as an example the amount of personal wealth (including all assets such as houses, cars, bank accounts, and investments) owned by thirteen individuals. Suppose the thirteen own the following amounts:
+                                .BGW
+                                    p.T-TXT
+                                        span.blue 1.
+                                        |  $0
+                                    p.T-TXT
+                                        span.blue 2.
+                                        |  $5,000
+                                    p.T-TXT
+                                        span.blue 3.
+                                        |  $10,000
+                                    p.T-TXT
+                                        span.blue 4.
+                                        |  $20,000
+                                    p.T-TXT
+                                        span.blue 5.
+                                        |  $40,000
+                                    p.T-TXT
+                                        span.blue 6.
+                                        |  $40,000
+                                    p.T-TXT
+                                        span.blue 7.
+                                        |  $40,000
+                                    p.T-TXT
+                                        span.blue 8.
+                                        |  $80,000
+                                    p.T-TXT
+                                        span.blue 9.
+                                        |  $100,000
+                                    p.T-TXT
+                                        span.blue 10.
+                                        |  $150,000
+                                    p.T-TXT
+                                        span.blue 11.
+                                        |  $200,000
+                                    p.T-TXT
+                                        span.blue 12.
+                                        |  $400,000
+                                    p.T-TXT
+                                        span.blue 13.
+                                        |  $10,000,000
+                                p.BXTX
+                                    | The
+                                    span.blue mean
+                                    |  corresponds to the average, arrived at by adding together the personal wealth of all 13 people and dividing the result by 13. The total is $11,085,000; dividing this by 13, we reach a mean of $852,692.31. This mean is often a useful calculation because it is based on the whole range of data provided. However, it can be misleading where one or a small number of cases are very different from the majority. In the above example, the mean is not in fact an appropriate measure of central tendency, because the presence of one very large figure, $10,000,000, skews the picture. One might get the impression when using the mean to summarize these data that most of the people own far more than they actually do. In such instances, one of two other measures may be used.
+                                p.BXTX
+                                    | The
+                                    span.blue mode
+                                    |  is the figure that occurs most frequently in a given set of data. In our example, it is $40,000. The problem with the mode is that it doesn’t take into account the overall distribution of the data—that is, the range of figures covered. The most frequently occurring case in a set of figures is not necessarily representative of their distribution as a whole and thus may not be a useful average. In this case, $40,000 is too close to the lower end of the figures.
+                                p.BXTX
+                                    | The third measure is the
+                                    span.blue median
+                                    | , which is the middle of any set of figures; here, this would be the seventh figure, again $40,000. Our example gives an odd number of figures, thirteen. If there had been an even number—for instance, twelve—the median would be calculated by taking the mean of the two middle cases, figures 6 and 7. Like the mode, the median gives no idea of the actual range of the data measured.
+                                p.BXTX
+                                    | Sometimes a researcher will use more than one measure of central tendency to avoid giving a deceptive picture of the average. More often, he or she will calculate the
+                                    span.blue standard deviation
+                                    |  for the data in question. This is a way of calculating the
+                                    span.blue degree of dispersal
+                                    | , or the range, of a set of figures—which in this case goes from $0 to $10,000,000.
+                                p.BXTX
+                                    | Correlation coefficients offer a useful way of expressing how closely connected two (or more) variables are. Where two variables correlate completely, we can speak of a perfect positive correlation, expressed as 1.0. Where no relation is found between two variables—they have no consistent connection at all—the coefficient is 0. A perfect negative correlation, expressed as −1.0, exists when two variables are in a completely inverse relation to each other. Perfect correlations are never found in the social sciences. Correlations of the order of 0.6 or more, whether positive or negative, are usually regarded as indicating a strong degree of connection between whatever variables are being analyzed. Positive correlations on this level might be found between, say, social class background and voting behavior.
+                                p.BXTX  
+                        p.BXTX  
+                        p.TXT
+                            span#page_23(epub:type='pagebreak')
+                            | As the world rapidly moves toward a single, unified economy, businesses and people move about the globe in increasing numbers in search of new markets and economic opportunities. As a result, the cultural map of the world changes: Networks of peoples span national borders and even continents, providing cultural connections between their birthplaces and their adoptive countries (Appadurai 1986). A handful of languages come to dominate, and in some cases replace, the thousands of different languages that were once spoken on the planet.
+                        ul.BL1
+                            li
+                                | Television, which brings U.S. culture (through networks such as MTV and shows such as CSI) into homes throughout the world daily
+                            li
+                                | The emergence of a unified global economy, with businesses whose factories, management structures, and markets often span continents and countries
+                            li
+                                | The emergence of a unified global economy, with businesses whose factories, management structures, and markets often span continents and countries
+                            li
+                                | Electronic communications (via cell phone, Skype, fax, e-mail, text message, Facebook, Twitter, and other communications on the Internet), which make instantaneous communication with almost any part of the planet an integral part of daily life in the business worldwide
+                        p.TXT
+                            | As the world rapidly moves toward a single, unified economy, businesses and people move about the globe in increasing numbers in search of new markets and economic opportunities. As a result, the cultural map of the world changes: Networks of peoples span national borders and even continents, providing cultural connections between their birthplaces and their adoptive countries (Appadurai 1986). A handful of languages come to dominate, and in some cases replace, the thousands of different languages that were once spoken on the planet.

@@ -1,0 +1,85 @@
+@import 'https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,700,800';
+
+/**************************
+ * Bootstrap Overrides
+ **************************/
+
+//== Colors
+$brand-primary: #EE2451;
+
+//== Typography
+$font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
+$font-family-serif:      "Lora", "Times New Roman", Times, serif;
+$font-family-base:       $font-family-serif;
+
+$font-size-base:         16px;
+
+$font-size-h1:           1.93em;
+$font-size-h2:           1.73em;
+
+$line-height-base:       1.7;
+
+$headings-font-family:   $font-family-sans-serif;
+$headings-font-weight:   800;
+
+// Import main css as base
+@import "main";
+
+
+/**************************
+ * THE REAL WORLD 5 CUSTOM
+ **************************/
+
+$color-h1:      #E1882C;
+$color-h2:      #00ADE9;
+
+h1 {
+  color: $color-h1;
+}
+
+h2 {
+  color: $color-h2;
+}
+
+p {
+  text-align: justify;
+}
+
+//== Keyterms
+// anchor elements
+.keyterm {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover, &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+  dfn {
+    font-style: normal;
+  }
+}
+
+// tooltip element
+.term {
+  font-family: $font-family-sans-serif;
+  font-size: 1.4rem;
+  .popover-title {
+    color: $brand-primary;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+}
+
+//== Image caption
+.pswp-gallery__caption {
+  font-family: $font-family-sans-serif;
+  font-size: 0.94em;
+}
+
+// figure text
+.FIG-T-B {
+  color: $brand-primary;
+  font-weight: bold;
+  padding-right: 1rem;
+}
