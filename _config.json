@@ -6,12 +6,13 @@
         "title": "nest",
         "description": "The Norton Ebook Standards Toolkit",
         "creator": "",
-        "identifier": "",
+        "id": "",
         "format": "",
         "type": "",
-        "language": "",
+        "language": "en-US",
         "rights": "",
-        "published": "W. W. Norton and Company"
+        "publisher": "W. W. Norton and Company",
+        "modified": ""
     },
     "production": {
         "baseUrl": "//moria.wwnorton.com/sandbox/evan/nest/"
@@ -31,7 +32,8 @@
         "data": "data"
     },
     "entries": {
-        "js": "**/*.js",
-        "css": "**.{sass,scss}"
+        "js": "{[^_]**/*.js,[^_]*.js}",
+        "css": "{[^_]**/*.{sass,scss},[^_]*.{sass,scss}}",
+        "manifest": "_package.pug"
     }
 }
