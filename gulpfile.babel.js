@@ -27,7 +27,8 @@ let config = Object.assign({}, configJSON, defaultNotification);
 
 let args = minimist(process.argv.slice(2));
 let dirs = config.directories;
-let taskTarget = args.production ? dirs.destination : dirs.temporary;
+let date = new Date().toJSON().slice(0,10)
+let taskTarget = args.production ? `${dirs.destination}_${date}` : dirs.temporary;
 
 // Create a new browserSync instance
 let browserSync = browserSyncLib.create();
@@ -50,12 +51,6 @@ gulp.task('build', [
   'copy',
   'imagemin',
   'pug',
-  'sass',
-  'browserify'
-]);
-
-// Build just the framework (CSS & JS)
-gulp.task('dist', [
   'sass',
   'browserify'
 ]);
