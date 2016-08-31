@@ -34,6 +34,8 @@ const Segment = (($) => {
 
     const Default = {
         createToC: true,
+        excludeClass: 'toc-exclude',
+        excludeAll: true,
         tocClass: `${NAMESPACE}-contents`,
         start: 2,
         end: 4,
@@ -231,6 +233,8 @@ const Segment = (($) => {
                     name: name,
                     level: level,
                     id: this._constructID(headingText),
+                    classList: $(heading).attr('class') || null,
+                    exclude: $(heading).hasClass(this.config.excludeClass),
                     contents: headingText
                 }
 
@@ -314,6 +318,8 @@ const Segment = (($) => {
         }
 
         _sectionWrap(el, item) {
+            if (item.exclude && this.config.excludeAll) return true
+
             // create the section container
             let $section = $(document.createElement('section')).attr({
                 id: item.id,
@@ -333,7 +339,7 @@ const Segment = (($) => {
         }
 
         _initToC() {
-            let classStr = `nav ${this.config.tocClass} ${this.config.tocClass}--h${this.config.start}`
+            let classStr = `${this.config.tocClass} ${this.config.tocClass}--h${this.config.start}`
             return $(document.createElement('ul'))
                 .addClass(classStr)[0]
         }
@@ -348,7 +354,7 @@ const Segment = (($) => {
                 Level.parent = this.toc
             } else if (change > 0) {
                 let ul = $(document.createElement('ul'))
-                    .addClass(`nav ${this.config.tocClass}--${item.name}`)
+                    .addClass(`${this.config.tocClass}--${item.name}`)
                 $(Level.parent).children().last().append(ul)
                 Level.parent = ul
             } else if (change < 0) {
@@ -358,6 +364,7 @@ const Segment = (($) => {
         }
 
         _createListItem(item) {
+            if (item.exclude) return
             return $(document.createElement('li'))
                 .addClass(`${this.config.tocClass}__item`)
                 .append($(document.createElement('a'))
