@@ -1,6 +1,6 @@
 mixin gallery(galleryID, options)
     - var isGallery = true
-    - var root = (typeof options === 'undefined' || typeof options.rootClass === 'undefined') ? 'pswp-gallery' : options.rootClass
+    - var root = 'pswp-gallery'
     each gallery in book.data._galleries
         if (gallery.id === galleryID)
             figure(class=root,id=galleryID,itemscope,itemtype="http://schema.org/ImageGallery")
@@ -13,7 +13,14 @@ mixin gallery(galleryID, options)
 
 mixin figure(imageID, options)
     - var isGallery = false
-    - var root = (typeof options === 'undefined' || typeof options.rootClass === 'undefined') ? 'pswp-figure' : options.rootClass
+    - var root = 'pswp-figure'
+    each figure in book.data._images
+        if (figure.id === imageID)
+            include ../_layouts/figure
+
+mixin fullbleed(imageID, options)
+    - var isGallery = false
+    - var root = 'fullbleed'
     each figure in book.data._images
         if (figure.id === imageID)
             include ../_layouts/figure
