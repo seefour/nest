@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Swiper (v1.0.2): jquery.swiper.js
+ * Swiper (v1.0.2): swiper.js
  * A jQuery plugin for easy and accessible PhotoSwipe initialization
  * by Evan Yamanishi
  * Licensed under GPL-3.0
@@ -50,7 +50,7 @@ const Swiper = (($) => {
 
         // figure>(a>img)+figcaption
         FIGURE  : 'figure',
-        LINK    : 'a',
+        LINK    : 'a[data-href],a[href]',
         THUMB   : 'img',
         CAPTION : 'figcaption'
     }
@@ -67,6 +67,7 @@ const Swiper = (($) => {
     const Ignore = [
         'class',
         'data-size',
+        'data-href',
         'href',
         'src'
     ]
@@ -213,8 +214,11 @@ const Swiper = (($) => {
 
             $(document).on(Event.CLICK_ANCHOR, Selector.LINK, (event) => {
                 let params = this._parseHash($(event.target).attr('href'))
-                this._triggerEl = event.target
-                this._openFromParameters(params, false)
+                if (params) {
+                    event.preventDefault()
+                    this._triggerEl = event.target
+                    this._openFromParameters(params, false)
+                }
             })
         }
 
@@ -271,7 +275,7 @@ const Swiper = (($) => {
             let item = {
                 w: parseInt(size[0], 10),
                 h: parseInt(size[1], 10),
-                src: $(link).attr('href')
+                src: $(link).attr('data-href') || $(link).attr('href')
             }
 
             let linkAts  = $(link.attributes)
