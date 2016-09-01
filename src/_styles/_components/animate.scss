@@ -4,6 +4,7 @@
 $animate-duration-complex: 375ms;
 $animate-duration-enter: 225ms;
 $animate-duration-exit: 195ms;
+$animate-duration-collapse: 350ms;    // bootstrap's Collapse.TRANSITION_DURATION
 
 // https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
 $animate-timing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
