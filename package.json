@@ -70,23 +70,23 @@
     },
     "browserify": {
         "transform": [
-      "browserify-shim"
-    ]
+            "browserify-shim"
+        ]
     },
     "browser": {
         "bootstrap": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js",
-        "bs-affix": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/affix.js",
-        "bs-alert": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/alert.js",
-        "bs-button": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/button.js",
-        "bs-carousel": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
-        "bs-collapse": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
-        "bs-dropdown": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js",
-        "bs-modal": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/modal.js",
-        "bs-popover": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/popover.js",
-        "bs-scrollspy": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
-        "bs-tab": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/tab.js",
-        "bs-tooltip": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js",
-        "bs-transition": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
+        "bs.affix": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/affix.js",
+        "bs.alert": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/alert.js",
+        "bs.button": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/button.js",
+        "bs.carousel": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
+        "bs.collapse": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
+        "bs.dropdown": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js",
+        "bs.modal": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/modal.js",
+        "bs.popover": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/popover.js",
+        "bs.scrollspy": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
+        "bs.tab": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/tab.js",
+        "bs.tooltip": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js",
+        "bs.transition": "./node_modules/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
         "photoswiper": "./node_modules/photoswiper/dist/photoswiper.js",
         "PhotoSwipeUIDefault": "./node_modules/photoswipe/dist/photoswipe-ui-default.js"
     },
@@ -95,40 +95,40 @@
             "exports": null,
             "depends": "jquery:jQuery"
         },
-        "bs-affix": {
+        "bs.affix": {
             "depends": "jquery:jQuery"
         },
-        "bs-alert": {
+        "bs.alert": {
             "depends": "jquery:jQuery"
         },
-        "bs-button": {
+        "bs.button": {
             "depends": "jquery:jQuery"
         },
-        "bs-carousel": {
+        "bs.carousel": {
             "depends": "jquery:jQuery"
         },
-        "bs-collapse": {
+        "bs.collapse": {
             "depends": "jquery:jQuery"
         },
-        "bs-dropdown": {
+        "bs.dropdown": {
             "depends": "jquery:jQuery"
         },
-        "bs-modal": {
+        "bs.modal": {
             "depends": "jquery:jQuery"
         },
-        "bs-popover": {
+        "bs.popover": {
             "depends": "jquery:jQuery"
         },
-        "bs-scrollspy": {
+        "bs.scrollspy": {
             "depends": "jquery:jQuery"
         },
-        "bs-tab": {
+        "bs.tab": {
             "depends": "jquery:jQuery"
         },
-        "bs-tooltip": {
+        "bs.tooltip": {
             "depends": "jquery:jQuery"
         },
-        "bs-transition": {
+        "bs.transition": {
             "depends": "jquery:jQuery"
         }
     }

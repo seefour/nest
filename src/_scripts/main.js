@@ -8,27 +8,31 @@ import $ from 'jquery'
 window.$ = $
 
 /* bootstrap plugins */
-import 'bs-affix'
-import 'bs-alert'
-// import 'bs-dropdown'
-import 'bs-tooltip'
-import 'bs-modal'
-import 'bs-transition'
-import 'bs-button'
-import 'bs-popover'
-// import 'bs-carousel'
-import 'bs-scrollspy'
-import 'bs-collapse'
-import 'bs-tab'
+import 'bs.affix'
+import 'bs.alert'
+// import 'bs.dropdown.js'
+import 'bs.tooltip.js'
+import 'bs.modal.js'
+import 'bs.transition.js'
+import 'bs.button.js'
+import 'bs.popover.js'
+// import 'bs.carousel.js'
+import 'bs.scrollspy.js'
+import 'bs.collapse.js'
+import 'bs.tab.js'
 
-/* photoswipe initializer */
-window.Swiper = require('../_scripts/_modules/swiper/swiper.js')
+/* attach modules to the window scope for use in custom/*.js files */
+// photoswipe initializer
+import Swiper from './_modules/swiper/swiper.js'
+window.Swiper = Swiper
 
-/* annotation (tooltips) initializer. made available to window */
-window.Annotate = require('../_scripts/_modules/annotate/annotate.js')
+// annotation (tooltips) initializer
+import Annotate from './_modules/annotate/annotate.js'
+window.Annotate = Annotate
 
-/* segment initializer. made available to window */
-window.Segment = require('../_scripts/_modules/segment/segment.js')
+// segment initializer
+import Segment from './_modules/segment/segment.js'
+window.Segment = Segment
 
 $(() => {
     // initialize annotate (tooltips) with default options
