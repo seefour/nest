@@ -35,6 +35,7 @@ const Swiper = (($) => {
         showAnimationDuration: 350, // match Bootstrap TRANSITION_DURATION
         hideAnimationDuration: 350,
         bgOpacity: 0.7,
+        history: false,
 
         // PhotoSwipeUI_Default OPTIONS
         shareEl: false
