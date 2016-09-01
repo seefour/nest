@@ -39,6 +39,7 @@ const Segment = (($) => {
         tocClass: `${NAMESPACE}-contents`,
         start: 2,
         end: 4,
+        sectionClass: 'section-container',
         sectionWrap: true
     }
 
@@ -73,6 +74,14 @@ const Segment = (($) => {
             return {
                 title: 'No headings found.',
                 description: 'Please ensure that all headings are properly tagged.'
+            }
+        },
+        PRE_EXISTING_SECTION(level, el) {
+            return {
+                title: 'Pre-existing <section> tag',
+                description: `The current h${level} is already the child of a <section> tag.`,
+                element: el,
+                warning: true
             }
         }
     };
@@ -188,6 +197,8 @@ const Segment = (($) => {
             if (Level.previous === 0 && item.level !== 1) {
                 this._postError(Error.FIRST_NOT_H1(item.level, el))
                 return false
+
+            // non-consecutive headings
             } else if (Level.previous !== 0 && item.level - Level.previous > 1) {
                 this._postError(Error.NONCONSECUTIVE_HEADER(Level.previous, item.level, el))
                 return false
@@ -196,10 +207,16 @@ const Segment = (($) => {
         }
 
         _postError(err) {
-            let errString = `HEADING ERROR\nType: ${err.title}\nInfo: ${err.description}`
+            let severity = err.warning ? 'warning' : 'error'
+            let errString = `HEADING ${severity.toUpperCase()}\nType: ${err.title}\nInfo: ${err.description}`
             if (err.element) {
-                console.error(errString, '\nProblem heading:', err.element)
-                $(err.element).addClass('error--heading')
+                let output = `${errString}\nProblem heading:`
+                if (err.warning) {
+                    console.warn(output, err.element)
+                } else {
+                    console.error(output, err.element)
+                }
+                $(err.element).addClass(`${severity}--heading`)
             } else {
                 console.error(errString)
             }
@@ -320,10 +337,12 @@ const Segment = (($) => {
         _sectionWrap(el, item) {
             if (item.exclude && this.config.excludeAll) return true
 
+            if ($(el).parent('section').not(`.${this.config.sectionClass}`).length > 0) this._postError(Error.PRE_EXISTING_SECTION(item.level, el))
+
             // create the section container
             let $section = $(document.createElement('section')).attr({
                 id: item.id,
-                class: 'section-container'
+                class: this.config.sectionClass
             })
 
             // replace the heading text with a non-tabbable anchor that
