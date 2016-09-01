@@ -1,3 +1,1 @@
-
-let seg = Segment.init()
-console.log(seg)
+Segment.init()
