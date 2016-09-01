@@ -49,6 +49,7 @@
         "height": 1313,
         "alt": "A blue and orange color-enhanced image of a bubbling nebula",
         "caption": "This Hubble Space Telescope image was released to celebrate Hubble's 26th year in orbit.",
+        "bleed": "nebula-480x1920.jpg",
         "full": "nebula-1382.jpg",
         "lg": "nebula-992.jpg",
         "md": "nebula-768.jpg",
@@ -118,5 +119,16 @@
         "caption": "<em>*Although arson data are included, sufficient data are not available to estimate totals for this offense.</em><p class='MAPS'>Source: FBI 2013a</p>",
         "full": "Pg_20.jpg",
         "md": "Pg_20.jpg"
+    },
+    {
+        "id": "baconburger",
+        "height": 1037,
+        "width": 1382,
+        "alt": "A delicious bacon cheeseburger",
+        "caption": "Salami chuck pork tenderloin, hamburger jerky sausage pork chop andouille ham jowl tri-tip shankle frankfurter.",
+        "full": "baconburger-1382.jpg",
+        "lg": "baconburger-992.jpg",
+        "md": "baconburger-768.jpg",
+        "sm": "baconburger-480.jpg"
     }
 ]
