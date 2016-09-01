@@ -58,7 +58,6 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 }
             }))
             .pipe(plugins.rename(function(path){
-                path.basename = path.basename.slice(1)
                 path.extname = '.opf'
             }))
             .pipe(plugins.changed(dest))
