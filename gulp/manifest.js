@@ -8,6 +8,7 @@ import pug from 'pug'
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
     let dirs = config.directories
     let entries = config.entries
+    let template = path.join(dirs.source,dirs.content,dirs.layouts,entries.manifest)
     let dest  = path.join(taskTarget, dirs.oebps)
 
     // Manifest
@@ -19,7 +20,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             let ids = []
             for(var i = 0; i < files.length; i++) {
                 let mimetype = mime.lookup(path.extname(files[i]))
-                let id = `${path.basename(files[i], path.extname(files[i]))}-${path.extname(files[i]).replace('.', '')}`
+                let id = `${path.extname(files[i]).replace('.', '')}-${path.basename(files[i], path.extname(files[i]))}`
                 if (ids.indexOf(id) >= 0) {
                     let root = id
                     let n = 0
@@ -44,7 +45,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             config.metadata.modified = new Date()
 
             // build the manifest opf file from the pug template
-            return gulp.src(path.join(dirs.source,entries.manifest))
+            return gulp.src(template)
             .pipe(plugins.changed(dest))
             .pipe(plugins.plumber())
             .pipe(plugins.pug({

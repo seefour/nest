@@ -2,12 +2,13 @@ block data
     - var meta = config.metadata
 
 doctype xml
-package(xmlns="http://www.idpf.org/2007/opf",version="3.1",xml:lang="en",unique-identifier="pub-id",prefix="dc: http://purl.org/dc/elements/1.1/")
+package(xmlns="http://www.idpf.org/2007/opf",version="3.0",xml:lang="en",unique-identifier="pub-id",prefix="dc: http://purl.org/dc/elements/1.1/")
     metadata(xmlns:dc="http://purl.org/dc/elements/1.1/")
         dc:title#title= meta.title
         dc:creator#creator= meta.creator
         dc:identifier#pub-id= meta.id
         dc:language= meta.language
+        //- todo: fix format for validation
         meta(property="dcterms:modified")= meta.modified
         dc:publisher= meta.publisher
     manifest
