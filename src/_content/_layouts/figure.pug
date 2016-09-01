@@ -1,6 +1,15 @@
 block figure
-    figure(class=isGallery?`${root}__figure`:root,itemscope,itemtype="http://schema.org/ImageObject")
-        a(class=`${root}__link`,href=`images/${figure.full}`,itemprop="contentUrl",data-size=figure.width+"x"+figure.height)
-            img(class=`${root}__thumbnail`,src=`images/${figure.md}`,alt=figure.alt,itemprop="thumbnail",aria-describedby=(longDescID)?longDescID:"")
+    - var c = (typeof options === 'undefined') ? '' : (typeof options === 'string') ? options : (typeof options.class === 'string') ? options.class : ''
+    - var id = ''
+    if (c.indexOf('#') === 0)
+        - id = c.replace('#', '')
+        - c = ''
+    - var fullbleed = root === 'fullbleed'
+    figure(class=[isGallery?`${root}__figure`:root,c],id=id,itemscope,itemtype="http://schema.org/ImageObject")
+        if !fullbleed
+            a(class=`${root}__link`,href=`images/${figure.full}`,itemprop="contentUrl",data-size=`${figure.width}x${figure.height}`)
+                img(class=`${root}__thumbnail`,src=`images/${figure.md}`,alt=figure.alt,itemprop="thumbnail",aria-describedby=(longDescID)?longDescID:"")
+        else
+            img(class=`${root}__image`,src=`images/${figure.bleed}`,alt=figure.alt,itemprop="thumbnail",aria-describedby=(longDescID)?longDescID:"")
         if (typeof figure.caption !== 'undefined')
             figcaption(class=[`${root}__caption`],itemprop="caption")!= figure.caption
