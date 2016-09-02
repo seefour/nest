@@ -1,3 +1,6 @@
 {
-    "requireLowerCaseAttributes": true
+    "requireLowerCaseAttributes": true,
+    "requireLowerCaseTags": true,
+    "requireSpecificAttributes": [ { "img": [ "alt" ] } ],
+    "validateAttributeQuoteMarks": "\""
 }
