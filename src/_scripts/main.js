@@ -26,7 +26,7 @@ import 'bs.tab.js'
 import Swiper from './_modules/swiper/swiper.js'
 window.Swiper = Swiper
 
-// annotation (tooltips) initializer
+// annotate (tooltips) initializer
 import Annotate from './_modules/annotate/annotate.js'
 window.Annotate = Annotate
 
