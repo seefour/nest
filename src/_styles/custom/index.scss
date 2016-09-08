@@ -1,11 +1,12 @@
 @import "../_vendor/bootstrap/bootstrap-variables";
+@import "node_modules/bootstrap/scss/mixins";
 
 /* just used for demo index.xhtml */
 header.nest-header {
     margin-top: 40px;
     .media-object {
         height: 67px;
-        @media (min-width: $screen-sm-min) {
+        @include media-breakpoint-up(sm) {
             height: 74px;
         }
     }

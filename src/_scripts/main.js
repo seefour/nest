@@ -4,24 +4,24 @@
 
 'use strict';
 
-import $ from 'jquery'
-window.$ = $
+import './_modules/globals.js'
+import 'bootstrap'
+
+const $ = jQuery
 
 /* bootstrap plugins */
-import 'bs.affix'
-import 'bs.alert'
-// import 'bs.dropdown.js'
-import 'bs.tooltip.js'
-import 'bs.modal.js'
-import 'bs.transition.js'
-import 'bs.button.js'
-import 'bs.popover.js'
-// import 'bs.carousel.js'
-import 'bs.scrollspy.js'
-import 'bs.collapse.js'
-import 'bs.tab.js'
+// import 'bs.util'
+// import 'bs.alert'
+// import 'bs.button'
+// // import 'bs.carousel'
+// import 'bs.collapse'
+// // import 'bs.dropdown'
+// import 'bs.modal'
+// import 'bs.scrollspy'
+// import 'bs.tab'
+// // import 'bs.tooltip'
+// // import 'bs.popover'
 
-/* attach modules to the window scope for use in custom/*.js files */
 // photoswipe initializer
 import Swiper from './_modules/swiper/swiper.js'
 window.Swiper = Swiper

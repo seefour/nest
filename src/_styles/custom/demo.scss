@@ -2,6 +2,7 @@ $brand-primary: coral;
 $link-color: cornflowerblue;
 
 @import "../_vendor/bootstrap/bootstrap-variables";
+@import "node_modules/bootstrap/scss/mixins";
 @import "../_components/animate";
 
 h1 > img {
@@ -12,10 +13,10 @@ h1 > img {
 .toc {
     float: right;
     border: 1px solid $gray-light;
-    border-radius: $border-radius-base;
+    border-radius: $border-radius;
     margin-left: $grid-gutter-width;
     min-width: 160px;
-    padding: ($line-height-computed / 2);
+    padding: $line-height-sm;
     h2 {
         font-size: 1.6rem;
         margin: 0;
@@ -46,7 +47,7 @@ h1 > img {
     .nest-contents {
         list-style-type: none;
         padding-left: 0;
-        padding-top: ($line-height-computed / 2);
+        padding-top: $line-height-sm;
         ul {
             list-style-type: none;
             padding-left: ($grid-gutter-width / 2);
@@ -54,15 +55,24 @@ h1 > img {
     }
 }
 
+.page-contents {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(sm) {
+        @include make-col(8);
+        @include make-col-offset(2);
+    }
+}
+
 .pswp-figure[class*=feature] {
-    margin-bottom: ($line-height-computed / 2);
+    margin-bottom: $line-height-sm;
 
     &[class$=left] {
         float: left;
         display: inline-block;
         margin-right: ($grid-gutter-width / 2);
         max-width: 50%;
-        @media (min-width: $screen-sm-min) {
+        @include media-breakpoint-up(sm) {
             margin-left: -$grid-gutter-width;
         }
     }
@@ -82,13 +92,13 @@ h1 > img {
     .pswp-figure__caption {
         border-bottom: 2px solid $brand-primary;
         font-family: $font-family-serif;
-        padding: ($line-height-computed / 2);
+        padding: $line-height-sm;
     }
 }
 
 .fullbleed {
-    margin-bottom: ($line-height-computed / 2);
-    
+    margin-bottom: $line-height-sm;
+
     &__image {
         width: 100vw;
         position: relative;
@@ -99,11 +109,20 @@ h1 > img {
     &__caption {
         border-bottom: 2px solid $brand-primary;
         font-family: $font-family-serif;
-        padding: ($line-height-computed / 2);
+        padding: $line-height-sm;
     }
 }
 
 .pswp-gallery {
+
+    &__figure {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(sm) {
+            @include make-col(3);
+        }
+    }
+
     &__link {
     }
     &__thumbnail {
