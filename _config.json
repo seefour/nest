@@ -22,6 +22,7 @@
         "destination": "build",
         "temporary": "tmp",
         "main": "OEBPS",
+        "container": "META-INF",
         "//": "Directories relative to `source` directory",
         "modules": "_modules",
         "layouts": "_layouts",
@@ -34,6 +35,7 @@
     "entries": {
         "js": "{[^_]**/*.js,[^_]*.js}",
         "css": "{[^_]**/*.{sass,scss},[^_]*.{sass,scss}}",
-        "manifest": "package.pug"
+        "manifest": "package.pug",
+        "container": "container.pug"
     }
 }
