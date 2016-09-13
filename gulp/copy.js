@@ -3,8 +3,8 @@
 import path from 'path';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
-    let dest = path.join(taskTarget);
+    let dirs = config.directories
+    let dest = path.join(taskTarget, dirs.main)
 
     // Copy
     gulp.task('copy', () => {
@@ -13,6 +13,6 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')
             ])
             .pipe(plugins.changed(dest))
-            .pipe(gulp.dest(dest));
-    });
+            .pipe(gulp.dest(dest))
+    })
 }

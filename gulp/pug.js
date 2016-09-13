@@ -8,8 +8,8 @@ import yaml from 'js-yaml';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
     let dirs = config.directories;
-    let dest = path.join(taskTarget, dirs.oebps);
-    let dataPath = path.join(dirs.source, dirs.oebps, dirs.data);
+    let dest = path.join(taskTarget, dirs.main);
+    let dataPath = path.join(dirs.source, dirs.data);
 
     // Pug template compile (formerly Jade)
     gulp.task('pug', () => {

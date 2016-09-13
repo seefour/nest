@@ -21,7 +21,7 @@
         "source": "src",
         "destination": "build",
         "temporary": "tmp",
-        "oebps": "OEBPS",
+        "main": "OEBPS",
         "//": "Directories relative to `source` directory",
         "modules": "_modules",
         "layouts": "_layouts",

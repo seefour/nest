@@ -17,7 +17,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
 
     let browserifyTask = (files) => {
         return files.map((entry) => {
-            let dest = path.resolve(path.join(taskTarget, dirs.oebps));
+            let dest = path.resolve(path.join(taskTarget, dirs.main));
 
             // Options
             let customOpts = {
