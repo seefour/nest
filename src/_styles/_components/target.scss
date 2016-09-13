@@ -1,7 +1,7 @@
-@mixin link-icon {
-    content: "\E051";
+%link-icon {
+    content: '\E051';
     cursor: pointer;
-    font-family: "Glyphicons Regular";
+    font-family: 'Glyphicons Regular';
     font-weight: normal;
     vertical-align: middle;
     width: 1.2em;
@@ -14,30 +14,30 @@
         position: relative;
         text-decoration: none;
 
-        &:after {
-            @include link-icon;
-            padding-left: 0.2em;
+        &::after {
+            @extend %link-icon;
+            padding-left: .2em;
         }
+
         @media (min-width: $screen-sm-min) {
             &:focus,
             &:hover {
                 color: inherit;
                 text-decoration: none;
-
-                &:before {
-                    @include link-icon;
-                    left: -1.2em;
-                    position: absolute;
+                &::after {
+                    display: inline;
                 }
             }
 
-            &:after {
+            &::after {
                 display: none;
+                left: -1.2em;
+                position: absolute;
             }
         }
     }
 }
 
-section[id]:target {
-    animation: highlight $animate-duration-complex*4 $animate-timing-enter;
+[id]:target {
+    animation: highlight (duration(complex) * 4) timing(enter);
 }

@@ -1,21 +1,26 @@
-/* Animation variables and keyframes */
+// Animation variables and keyframes
 
 // https://material.google.com/motion/duration-easing.html#duration-easing-common-durations
-$animate-duration-complex: 375ms;
-$animate-duration-enter: 225ms;
-$animate-duration-exit: 195ms;
-$animate-duration-collapse: 350ms;    // bootstrap's Collapse.TRANSITION_DURATION
+$animate-duration: (
+    enter: 225ms,
+    exit: 195ms,
+    collapse: 350ms,    // bootstrap's Collapse.TRANSITION_DURATION
+    complex: 375ms
+);
 
 // https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
-$animate-timing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
-$animate-timing-enter: cubic-bezier(0.0, 0.0, 0.2, 1);
-$animate-timing-exit: cubic-bezier(0.4, 0.0, 1, 1);
-$animate-timing-sharp: cubic-bezier(0.4, 0.0, 0.6, 1);
+$animate-timing: (
+    standard: cubic-bezier(.4, 0, .2, 1),
+    enter: cubic-bezier(0, 0, .2, 1),
+    exit: cubic-bezier(.4, 0, 1, 1),
+    sharp: cubic-bezier(.4, 0, .6, 1)
+);
 
-// used on :target events
+// used on :target events to highlight the block
 $color-hl: $brand-info;
 @keyframes highlight {
-    from, to {
+    from,
+    to {
         background-color: inherit;
     }
 

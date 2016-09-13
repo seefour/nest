@@ -1,8 +1,7 @@
-$brand-primary: coral;
-$link-color: cornflowerblue;
-
-@import "../_vendor/bootstrap/bootstrap-variables";
-@import "../_components/animate";
+$brand-primary: #ff7f50; // coral
+$link-color: #6495ed;    // cornflowerblue
+@import '../_vendor/bootstrap/bootstrap-variables';
+@import '../_components/animate';
 
 h1 > img {
     height: $font-size-h1 * $headings-line-height;
@@ -10,43 +9,53 @@ h1 > img {
 }
 
 .toc {
-    float: right;
     border: 1px solid $gray-light;
     border-radius: $border-radius-base;
+    float: right;
     margin-left: $grid-gutter-width;
     min-width: 160px;
     padding: ($line-height-computed / 2);
+
     h2 {
         font-size: 1.6rem;
         margin: 0;
         text-decoration: none;
-        [data-toggle=collapse] {
-            color: inherit;
-            display: block;
-            &:hover, &:focus {
-                text-decoration: none;
-            }
-            &:focus {
-                outline: none;
-                .glyphicons-chevron-down {
-                    color: $brand-primary;
-                }
-            }
-            &[aria-expanded=false] {
-                .glyphicons-chevron-down {
-                    transition: transform $animate-duration-collapse $animate-timing-standard;
-                    transform: rotate(180deg);
-                }
-            }
+    }
+
+    [data-toggle=collapse] {
+        color: inherit;
+        display: block;
+
+        &:focus,
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: none;
+
             .glyphicons-chevron-down {
-                transition: transform $animate-duration-collapse $animate-timing-standard;
+                color: $brand-primary;
             }
         }
     }
+
+    [aria-expanded=false] {
+        .glyphicons-chevron-down {
+            transform: rotate(180deg);
+            transition: transform duration(collapse) timing(standard);
+        }
+    }
+
+    .glyphicons-chevron-down {
+        transition: transform duration(collapse) timing(standard);
+    }
+
     .nest-contents {
         list-style-type: none;
         padding-left: 0;
         padding-top: ($line-height-computed / 2);
+
         ul {
             list-style-type: none;
             padding-left: ($grid-gutter-width / 2);
@@ -58,10 +67,11 @@ h1 > img {
     margin-bottom: ($line-height-computed / 2);
 
     &[class$=left] {
-        float: left;
         display: inline-block;
+        float: left;
         margin-right: ($grid-gutter-width / 2);
         max-width: 50%;
+
         @media (min-width: $screen-sm-min) {
             margin-left: -$grid-gutter-width;
         }
@@ -75,8 +85,8 @@ h1 > img {
 
     .pswp-figure__thumbnail {
         display: block;
-        max-width: 100%;
         height: auto;
+        max-width: 100%;
     }
 
     .pswp-figure__caption {
@@ -88,14 +98,15 @@ h1 > img {
 
 .fullbleed {
     margin-bottom: ($line-height-computed / 2);
-    
+
     &__image {
-        width: 100vw;
-        position: relative;
-        margin-left: -50vw;
         left: 50%;
+        margin-left: -50vw;
         overflow: hidden;
+        position: relative;
+        width: 100vw;
     }
+
     &__caption {
         border-bottom: 2px solid $brand-primary;
         font-family: $font-family-serif;
@@ -104,12 +115,11 @@ h1 > img {
 }
 
 .pswp-gallery {
-    &__link {
-    }
     &__thumbnail {
         max-height: 150px;
         overflow: hidden;
     }
+
     &__caption {
         display: none;
     }

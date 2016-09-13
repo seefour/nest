@@ -1,66 +1,63 @@
-/*
- * PhotoSwipe custom styles
- */
+// PhotoSwipe custom styles
 $pswp-root: 'pswp';
 $btn-width: 44px;
 $btn-height: 44px;
 $btn-font-size: 16px;
 $sidebar-width: 300px;
 
-.#{$pswp-root} {
-    // button base
-    &__button {
+// button base
+.#{$pswp-root}__button {
+    background: none;
+    color: $gray-lighter;
+    font-size: 16px;
+    height: $btn-height;
+    line-height: 1;
+    width: $btn-width;
+
+    .glyphicons {
+        pointer-events: none;
+    }
+
+    &--next,
+    &--previous {
         background: none;
-        width: $btn-width;
-        height: $btn-height;
-        color: $gray-lighter;
-        font-size: 16px;
-        line-height: 1;
+        background-color: rgba($gray-base, .3);
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        width: 32px;
+    }
 
-        .glyphicons {
-            pointer-events: none;
-        }
+    &--previous {
+        left: 6px;
+    }
 
+    &--next {
+        right: 6px;
+    }
+}
+
+.#{$pswp-root}--svg .#{$pswp-root}__button {
+    @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+        background-image: none;
+    }
+}
+
+// has mouse condition
+.#{$pswp-root}--has_mouse {
+    .#{$pswp-root}__button {
         &--next,
         &--previous {
-            background: none;
-            top: 50%;
-            width: 32px;
-            height: 30px;
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        &--previous {
-            left: 6px;
-        }
-
-        &--next {
-            right: 6px;
+            opacity: 1;
+            transition: opacity duration(complex) timing(sharp);
         }
     }
-
-    &--svg .#{$pswp-root}__button {
-        @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
-            background-image: none;
-        }
-    }
-    // has mouse condition
-    &--has_mouse {
+    // idle condition
+    .#{$pswp-root}__ui--idle {
         .#{$pswp-root}__button {
             &--next,
             &--previous {
-                opacity: 1;
-                transition: opacity $animate-duration-complex $animate-timing-sharp;
-            }
-        }
-        // idle condition
-        .#{$pswp-root}__ui--idle {
-            .#{$pswp-root}__button {
-                &--next,
-                &--previous {
-                    opacity: 0;
-                }
+                opacity: 0;
             }
         }
     }
