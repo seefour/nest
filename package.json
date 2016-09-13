@@ -5,7 +5,7 @@
         "bootstrap-sass": "^3.3.7",
         "jquery": "~3.1.0",
         "photoswipe": "^4.1.1",
-        "tabtrap": "^1.1.3"
+        "tabtrap": "^1.1.4"
     },
     "devDependencies": {
         "autoprefixer": "^6.4.0",
