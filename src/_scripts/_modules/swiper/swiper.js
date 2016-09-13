@@ -326,9 +326,7 @@ const Swiper = (($) => {
 
         _manageFocus() {
             if (this._config.tabtrap) {
-                $(pswpEl).tabtrap({
-                    disableOnEscape: false
-                })
+                $(pswpEl).tabtrap()
                 $(document).on('tab.a11y.tabtrap', $(pswpEl), () => {
                     $(pswpEl).find('.pswp__ui').removeClass('pswp__ui--idle')
                 })
