@@ -1,16 +1,18 @@
-'use strict';
+'use strict'
 
-import path from 'path';
-import autoprefixer from 'autoprefixer';
-import gulpif from 'gulp-if';
+import path from 'path'
+import autoprefixer from 'autoprefixer'
+import gulpif from 'gulp-if'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
-    let entries = config.entries;
-    let dest = path.join(taskTarget, dirs.main, dirs.styles.replace('_', ''));
+export default function(gulp, plugins, browserSync, options) {
+    let args = options.args
+    let config = options.config
+    let dirs = config.directories
+    let entries = config.entries
+    let dest = path.join(options.target, dirs.main, dirs.styles.replace('_', ''))
 
     // Sass compilation
-    gulp.task('sass', () => {
+    return (done) => {
         gulp.src(path.join(dirs.source, dirs.styles, entries.css))
             .pipe(plugins.plumber())
             .pipe(plugins.sourcemaps.init())
@@ -19,7 +21,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 precision: 10
             }))
             .on('error', function(err) {
-                plugins.util.log(err);
+                plugins.util.log(err)
             })
             .on('error', plugins.notify.onError(config.defaultNotification))
             .pipe(plugins.postcss([autoprefixer({
@@ -32,6 +34,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             .pipe(gulp.dest(dest))
             .pipe(browserSync.stream({
                 match: '**/*.css'
-            }));
-    });
+            }))
+        done()
+    }
 }

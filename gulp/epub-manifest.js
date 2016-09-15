@@ -1,10 +1,3 @@
-/**
- * epub-required files
- * META-INF/container.xml
- * OEBPS/package.opf
- * manifest
- **/
-
 'use strict';
 
 import glob from 'glob'
@@ -13,40 +6,16 @@ import path from 'path'
 import pug from 'pug'
 import fs from 'fs'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
+export default function(gulp, plugins, browserSync, options) {
+    let config = options.config
     let dirs = config.directories
     let entries = config.entries
-    let destContainer = path.join(taskTarget, dirs.container)
-    let destManifest = path.join(taskTarget, dirs.main)
-    let templateContainer = path.join(dirs.source, dirs.content, dirs.layouts, entries.container)
-    let templateManifest = path.join(dirs.source, dirs.content, dirs.layouts, entries.manifest)
 
-    // ./META-INF/container.xml
-    gulp.task('container', () => {
-        return gulp.src(templateContainer)
-            .pipe(plugins.changed(destContainer))
-            .pipe(plugins.plumber())
-            .pipe(plugins.pug({
-                pug: pug,
-                pretty: true,
-                locals: {
-                    config: config,
-                    debug: true
-                }
-            }))
-            .pipe(plugins.rename(function(path) {
-                path.extname = '.xml'
-            }))
-            .pipe(gulp.dest(destContainer))
-    })
+    let template = path.join(dirs.source, dirs.content, dirs.layouts, entries.manifest)
+    let dest = path.join(options.target, dirs.main)
 
-    // ./mimetype
-    gulp.task('mimetype', () => (
-        fs.writeFileSync(path.join(taskTarget, 'mimetype'), 'application/epub+zip')
-    ))
-
-    // OEBPS/package.opf
-    gulp.task('manifest', function() {
+    // Manifest -> OEBPS/package.opf
+    return (done) => {
         let manifestMap = (files) => {
             // create the manifest array
             let manifest = []
@@ -66,7 +35,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 if (mimetype !== 'application/octet-stream') {
                     let item = {
                         id: id,
-                        path: path.relative(destManifest, files[i]),
+                        path: path.relative(dest, files[i]),
                         properties: '',
                         type: mimetype
                     }
@@ -80,8 +49,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             config.metadata.modified = timestamp.toISOString().replace(/\.\d+Z/g, 'Z')
 
             // build the manifest opf file from the pug template
-            return gulp.src(templateManifest)
-                .pipe(plugins.changed(destManifest))
+            return gulp.src(template)
+                .pipe(plugins.changed(dest))
                 .pipe(plugins.plumber())
                 .pipe(plugins.pug({
                     pug: pug,
@@ -95,21 +64,15 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 .pipe(plugins.rename(function(path) {
                     path.extname = '.opf'
                 }))
-                .pipe(gulp.dest(destManifest))
+                .pipe(gulp.dest(dest))
         }
 
-        glob(path.join(destManifest, '**/*'), function(err, data) {
+        glob(path.join(dest, '**/*'), function(err, data) {
             if (err) {
                 console.error(err)
             }
             return manifestMap(data)
         })
-    })
-
-    // all epub-related tasks
-    gulp.task('epub', [
-        'container',
-        'mimetype',
-        'manifest'
-    ])
+        done()
+    }
 }
