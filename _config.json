@@ -25,12 +25,14 @@
         "container": "META-INF",
         "//": "Directories relative to `source` directory",
         "modules": "_modules",
-        "layouts": "_layouts",
         "images": "_images",
         "styles": "_styles",
         "scripts": "_scripts",
+        "data": "data",
         "content": "_content",
-        "data": "data"
+        "//": "Directories relative to `content` directory",
+        "layouts": "_layouts",
+        "html": "_html"
     },
     "entries": {
         "css": "{[^_]**/*.{sass,scss},[^_]*.{sass,scss}}",
