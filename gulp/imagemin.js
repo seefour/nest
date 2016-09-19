@@ -13,7 +13,7 @@ export default function(gulp, plugins, browserSync, options) {
 
     // Imagemin
     return (done) => {
-        return gulp.src(path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'))
+        gulp.src(path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'))
             .pipe(plugins.changed(dest))
             .pipe(gulpif(args.production, plugins.imagemin({
                 progressive: true,

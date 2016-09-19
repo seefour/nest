@@ -66,7 +66,7 @@ gulp.task('build',
 
 // EPUB-related tasks
 gulp.task('epub',
-    gulp.parallel('epub:container', 'epub:mimetype', 'epub:manifest')
+    gulp.parallel('epub-container', 'epub-mimetype', 'epub-manifest')
 )
 
 // Server tasks with watch

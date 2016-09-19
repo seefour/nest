@@ -55,7 +55,13 @@ export default function(gulp, plugins, browserSync, options) {
             config.baseUrl = config.production.baseUrl
         }
 
-        gulp.src(path.join(dirs.source, dirs.content, entries.html))
+        // hack to get around pug's epub-invlaid strict doctype
+        let type = {
+            strict: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+            html: '<!DOCTYPE html>'
+        }
+
+        return gulp.src(path.join(dirs.source, dirs.content, entries.html))
             .pipe(plugins.changed(dest))
             .pipe(plugins.plumber())
             .pipe(plugins.data(function(file) {
@@ -73,22 +79,18 @@ export default function(gulp, plugins, browserSync, options) {
                 pretty: true
             }))
             .pipe(plugins.htmlmin({
-                caseSensitive: true,
                 collapseBooleanAttributes: false,
-                keepClosingSlash: true,
-                preserveLineBreaks: true,
+                conservativeCollapse: true,
                 removeCommentsFromCDATA: true,
                 removeEmptyAttributes: true,
-                removeEmptyElements: true,
                 removeRedundantAttributes: true,
-                useShortDoctype: true
+                keepClosingSlash: true,
+                caseSensitive: true
             }))
-            .pipe(plugins.jsbeautifier({
-                max_preserve_newlines: 0
-            }))
-            .pipe(plugins.if(args.production, plugins.rename(function(path) {
+            .pipe(plugins.if(args.production(plugins.rename(function(path) {
                 path.extname = '.xhtml'
             })))
+            .pipe(plugins.replace(type.strict, type.html))
             .pipe(gulp.dest(dest))
             .on('end', browserSync.reload)
 

@@ -12,13 +12,14 @@ export default function(gulp, plugins, browserSync, options) {
             // Styles
             gulp.watch([
                 path.join(dirs.source, dirs.styles, '**/*.{scss,sass}')
-            ], gulp.series('sass'))
+            ], ['sass'])
 
             // Jade Templates
             gulp.watch([
-                path.join(dirs.source, '**/*{.jade,.pug}'),
+                path.join(dirs.source, '**/*.jade'),
+                path.join(dirs.source, '**/*.pug'),
                 path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
-            ], gulp.series('pug'))
+            ], ['pug'])
 
             // Copy
             gulp.watch([
@@ -26,12 +27,12 @@ export default function(gulp, plugins, browserSync, options) {
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
                 '!' + path.join(dirs.source, '**/*.jade'),
                 '!' + path.join(dirs.source, '**/*.pug')
-            ], gulp.series('copy'))
+            ], ['copy'])
 
             // Images
             gulp.watch([
                 path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}')
-            ], gulp.series('imagemin'))
+            ], ['imagemin'])
 
             // All other files
             gulp.watch([

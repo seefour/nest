@@ -8,10 +8,10 @@ export default function(gulp, plugins, browserSync, options) {
 
     // Clean
     return (done) => {
-        del([
+            del([
             path.join(dirs.temporary),
             path.join(dirs.destination)
-        ], done)
+        ])
         done()
     }
 }
