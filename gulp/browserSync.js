@@ -19,5 +19,6 @@ export default function(gulp, plugins, browserSync, options) {
                 })()
             }
         })
+        done()
     }
 }
