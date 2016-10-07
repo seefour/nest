@@ -4,14 +4,17 @@
     "baseUrl": "./",
     "metadata": {
         "title": "nest",
-        "description": "The Norton Ebook Standards Toolkit",
-        "creator": "",
-        "id": "",
-        "format": "",
-        "type": "",
+        "identifier": "",
         "language": "en-US",
-        "rights": "",
+        "creator": "",
+        "contributor": "",
         "publisher": "W. W. Norton and Company",
+        "date": "",
+        "subject": "",
+        "description": "The Norton Ebook Standards Toolkit",
+        "rights": "",
+        "source": "",
+        "id": "",
         "modified": ""
     },
     "production": {
