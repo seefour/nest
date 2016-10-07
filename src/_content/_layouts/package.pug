@@ -4,13 +4,28 @@ block data
 doctype xml
 package(xmlns="http://www.idpf.org/2007/opf",version="3.0",xml:lang="en",unique-identifier="pub-id",prefix="dc: http://purl.org/dc/elements/1.1/")
     metadata(xmlns:dc="http://purl.org/dc/elements/1.1/")
+        //- dublincore elements
+        //- required under epub3.1 spec
         dc:title#title= meta.title
-        dc:creator#creator= meta.creator
         dc:identifier#pub-id= meta.id
         dc:language= meta.language
         //- todo: fix format for validation
-        meta(property="dcterms:modified")= meta.modified
+        
+        //- optional
+        dc:creator= meta.creator // needs loop
+        dc:contributor= meta.contributor // needs loop - secondary contributors to rendition contents
         dc:publisher= meta.publisher
+        dc:date= meta.date // publication date
+        dc:subject= meta.subject // needs loop - these are BISAC subjects
+        dc:description= meta.description // marketing text
+        dc:rights= meta.rights // copyright line: Copyright (c) 2016 etc.
+        dc:source= meta.source // source document (e.g., isbn of ebook's parent)
+        
+        //- meta elements
+        meta(property="dcterms:modified")= meta.modified
+
+        //- todo: add link elements with onix tie? see comment on issue #6
+        
     manifest
         each file in files
             item(id=file.id,href=file.path,media-type=file.type)/
