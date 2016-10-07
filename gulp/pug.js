@@ -61,7 +61,7 @@ export default function(gulp, plugins, browserSync, options) {
             html: '<!DOCTYPE html>'
         }
 
-        return gulp.src(path.join(dirs.source, dirs.content, entries.html))
+        gulp.src(path.join(dirs.source, dirs.content, entries.html))
             .pipe(plugins.changed(dest))
             .pipe(plugins.plumber())
             .pipe(plugins.data(function(file) {
@@ -87,9 +87,9 @@ export default function(gulp, plugins, browserSync, options) {
                 keepClosingSlash: true,
                 caseSensitive: true
             }))
-            .pipe(plugins.if(args.production(plugins.rename(function(path) {
+            .pipe(plugins.rename((path) => {
                 path.extname = '.xhtml'
-            })))
+            }))
             .pipe(plugins.replace(type.strict, type.html))
             .pipe(gulp.dest(dest))
             .on('end', browserSync.reload)
