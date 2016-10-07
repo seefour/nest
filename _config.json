@@ -4,17 +4,29 @@
     "baseUrl": "./",
     "metadata": {
         "title": "nest",
-        "identifier": "",
+        "identifier": {
+            "id": "ebook-isbn",
+            "isbn": ""
+        },
         "language": "en-US",
-        "creator": "",
-        "contributor": "",
+        "creator": {
+            "id": "",
+            "name": "",
+            "role": ""
+        },
+        "contributor": {
+            "id": "",
+            "name": "",
+            "role": ""
+        },
         "publisher": "W. W. Norton and Company",
         "date": "",
-        "subject": "",
+        "subject": {
+            "bisac": ""
+        },
         "description": "The Norton Ebook Standards Toolkit",
         "rights": "",
         "source": "",
-        "id": "",
         "modified": ""
     },
     "production": {
