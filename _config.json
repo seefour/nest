@@ -22,7 +22,8 @@
         "publisher": "W. W. Norton and Company",
         "date": "",
         "subject": {
-            "bisac": ""
+            "bisac-code": "",
+            "bisac-heading": ""
         },
         "description": "The Norton Ebook Standards Toolkit",
         "rights": "",
