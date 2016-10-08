@@ -35,7 +35,9 @@ const date = new Date().toJSON().slice(0, 10)
 const options = {
     args: args,
     config: config,
-    target: args.production ? `${config.directories.destination}_${date}` : config.directories.temporary
+    target: args.production ?
+        path.join(config.directories.destination, date) :
+        config.directories.temporary
 }
 
 const taskPath = './gulp'
