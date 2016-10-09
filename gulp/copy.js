@@ -8,7 +8,7 @@ export default function(gulp, plugins, browserSync, options) {
 
     // Copy
     return (done) => {
-        return gulp.src([
+        gulp.src([
                 path.join(dirs.source, '**/*'),
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')
             ])
