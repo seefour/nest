@@ -1,7 +1,6 @@
 'use strict'
 
 import path from 'path'
-import gulpif from 'gulp-if'
 import pngquant from 'imagemin-pngquant'
 
 export default function(gulp, plugins, browserSync, options) {
@@ -15,7 +14,7 @@ export default function(gulp, plugins, browserSync, options) {
     return (done) => {
         gulp.src(path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'))
             .pipe(plugins.changed(dest))
-            .pipe(gulpif(args.production, plugins.imagemin({
+            .pipe(plugins.if(args.production, plugins.imagemin({
                 progressive: true,
                 svgoPlugins: [{
                     removeViewBox: false
