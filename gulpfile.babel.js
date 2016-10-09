@@ -41,6 +41,7 @@ const options = {
         config.directories.temporary
 }
 
+// gulp task files
 const taskPath = './gulp'
 
 // task getter
@@ -50,15 +51,9 @@ function getTask(name) {
 
 // define all tasks in taskPath
 fs.readdirSync(taskPath)
-    .filter((filename) => {
-        return filename.match(/\.js$/i)
-    })
-    .map((filename) => {
-        return path.basename(filename, '.js')
-    })
-    .forEach((task) => {
-        gulp.task(task, getTask(task))
-    })
+    .filter((filename) => filename.match(/\.js$/i))
+    .map((filename) => path.basename(filename, '.js'))
+    .forEach((task) => gulp.task(task, getTask(task)))
 
 /* TASK SEQUENCE DEFINITIONS */
 
