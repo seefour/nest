@@ -13,9 +13,8 @@ export default function(gulp, plugins, browserSync, options) {
 
     // Container -> ./META-INF/container.xml
     return (done) => {
-        return gulp.src(template)
+        gulp.src(template)
             .pipe(plugins.changed(dest))
-            .pipe(plugins.plumber())
             .pipe(plugins.pug({
                 pug: pug,
                 pretty: true,
@@ -24,9 +23,7 @@ export default function(gulp, plugins, browserSync, options) {
                     debug: true
                 }
             }))
-            .pipe(plugins.rename(function(path) {
-                path.extname = '.xml'
-            }))
+            .pipe(plugins.rename((path) => path.extname = '.xml'))
             .pipe(gulp.dest(dest))
         done()
     }
