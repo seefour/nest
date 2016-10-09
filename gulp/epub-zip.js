@@ -5,7 +5,6 @@ import fs from 'fs'
 
 export default function(gulp, plugins, browserSync, options) {
     let buildDir = path.join(options.target, '**/*')
-    let dest = `./${path.join(options.config.directories.destination)}`
 
     // Zip -> turns build_dir/ into build_dir.epub
     return (done) => {
@@ -17,7 +16,7 @@ export default function(gulp, plugins, browserSync, options) {
 
         gulp.src(buildDir)
             .pipe(plugins.zip(`${options.target}.epub`))
-            .pipe(gulp.dest(dest))
+            .pipe(gulp.dest('./'))
         done()
     }
 }
