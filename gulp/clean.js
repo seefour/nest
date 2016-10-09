@@ -5,12 +5,14 @@ import del from 'del'
 
 export default function(gulp, plugins, browserSync, options) {
     let dirs = options.config.directories
+    let title = options.config.metadata.title
 
     // Clean
     return (done) => {
             del([
-            path.join(dirs.temporary),
-            path.join(dirs.destination)
+            path.join(dirs.destination, `${title}_${options.date}`),
+            path.join(dirs.destination, `${title}_${options.date}.epub`),
+            path.resolve(dirs.temporary)
         ])
         done()
     }

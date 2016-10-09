@@ -35,8 +35,9 @@ const date = new Date().toJSON().slice(0, 10)
 const options = {
     args: args,
     config: config,
+    date: date,
     target: args.production ?
-        path.join(config.directories.destination, date) :
+        path.join(config.directories.destination, `${config.metadata.title}_${date}`) :
         config.directories.temporary
 }
 
@@ -68,7 +69,10 @@ gulp.task('build',
 
 // EPUB-related tasks
 gulp.task('epub',
-    gulp.parallel('epub-container', 'epub-mimetype', 'epub-manifest')
+    gulp.series(
+        gulp.parallel('epub-container', 'epub-manifest'),
+        'epub-zip'
+    )
 )
 
 // Server tasks with watch
