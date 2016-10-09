@@ -2,7 +2,6 @@
 
 import path from 'path'
 import autoprefixer from 'autoprefixer'
-import gulpif from 'gulp-if'
 
 export default function(gulp, plugins, browserSync, options) {
     let args = options.args
@@ -14,7 +13,7 @@ export default function(gulp, plugins, browserSync, options) {
     // Sass compilation
     return (done) => {
         gulp.src(path.join(dirs.source, dirs.styles, entries.css))
-            .pipe(plugins.plumber())
+            .pipe(plugins.changed(dest))
             .pipe(plugins.sourcemaps.init())
             .pipe(plugins.sass({
                 outputStyle: 'expanded',
@@ -27,10 +26,10 @@ export default function(gulp, plugins, browserSync, options) {
             .pipe(plugins.postcss([autoprefixer({
                 browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4']
             })]))
-            .pipe(gulpif(args.production, plugins.cssnano({
+            .pipe(plugins.if(args.production, plugins.cssnano({
                 rebase: false
             })))
-            .pipe(gulpif(!args.production, plugins.sourcemaps.write('./')))
+            .pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
             .pipe(gulp.dest(dest))
             .pipe(browserSync.stream({
                 match: '**/*.css'

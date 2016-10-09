@@ -63,7 +63,6 @@ export default function(gulp, plugins, browserSync, options) {
 
         gulp.src(path.join(dirs.source, dirs.content, entries.html))
             .pipe(plugins.changed(dest))
-            .pipe(plugins.plumber())
             .pipe(plugins.data(function(file) {
                 return {
                     book: {
