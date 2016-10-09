@@ -14,10 +14,9 @@ export default function(gulp, plugins, browserSync, options) {
                 path.join(dirs.source, dirs.styles, '**/*.{scss,sass}')
             ], gulp.parallel('sass'))
 
-            // Jade Templates
+            // Pug
             gulp.watch([
-                path.join(dirs.source, '**/*.jade'),
-                path.join(dirs.source, '**/*.pug'),
+                path.join(dirs.source, '**/*.{jade,pug}'),
                 path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
             ], gulp.parallel('pug'))
 
@@ -25,8 +24,7 @@ export default function(gulp, plugins, browserSync, options) {
             gulp.watch([
                 path.join(dirs.source, '**/*'),
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
-                '!' + path.join(dirs.source, '**/*.jade'),
-                '!' + path.join(dirs.source, '**/*.pug')
+                '!' + path.join(dirs.source, '**/*.{jade,pug}')
             ], gulp.parallel('copy'))
 
             // Images
@@ -37,7 +35,7 @@ export default function(gulp, plugins, browserSync, options) {
             // All other files
             gulp.watch([
                 path.join(dirs.temporary, '**/*'),
-                '!' + path.join(dirs.temporary, '**/*.{css,map,html,js,json}')
+                '!' + path.join(dirs.temporary, '**/*.{css,map,html,xhtml,js,json}')
             ]).on('change', browserSync.reload)
         }
         done()
