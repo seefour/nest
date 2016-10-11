@@ -58,7 +58,7 @@ export default function(gulp, plugins, browserSync, options) {
         config.metadata.modified = timestamp.toISOString().replace(/\.\d+Z/g, 'Z')
 
         // build the manifest array
-        let files = globby.sync(path.join(dest, '**/*'))
+        let files = glob.sync(path.join(dest, '**/*'))
         let manifestData = manifestMap(files)
 
         // build the manifest opf file from the pug template
