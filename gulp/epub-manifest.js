@@ -2,7 +2,7 @@
 
 import path from 'path'
 import fs from 'fs'
-import globby from 'globby'
+import glob from 'glob'
 import mime from 'mime'
 import pug from 'pug'
 
@@ -28,25 +28,23 @@ export default function(gulp, plugins, browserSync, options) {
 
     // build the manifest array
     function manifestMap(files) {
-        let manifest = []
-        for (let file of files) {
+        return files.filter((file) => {
             let mimetype = mime.lookup(path.extname(file))
-
+            if (mimetype === 'application/octet-stream') return false
+            return true
+        }).map((file) => {
+            let mimetype = mime.lookup(path.extname(file))
             // id string: ext-filename
             let id = `${path.extname(file).replace('.', '')}-${path.basename(file, path.extname(file))}`
             if (ids.indexOf(id) >= 0) makeIdUnique(id)
             ids.push(id)
-            if (mimetype !== 'application/octet-stream') {
-                let item = {
-                    id: id,
-                    path: path.relative(dest, file),
-                    properties: '', // todo: generate properties
-                    type: mimetype
-                }
-                manifest.push(item)
+            return {
+                id: id,
+                path: path.relative(dest, file),
+                properties: '', // todo: generate properties
+                type: mimetype
             }
-        }
-        return manifest
+        })
     }
 
     // Manifest -> OEBPS/package.opf
@@ -63,7 +61,6 @@ export default function(gulp, plugins, browserSync, options) {
 
         // build the manifest opf file from the pug template
         gulp.src(template)
-            .pipe(plugins.changed(dest))
             .pipe(plugins.pug({
                 pug: pug,
                 pretty: true,
@@ -74,6 +71,7 @@ export default function(gulp, plugins, browserSync, options) {
                 }
             }))
             .pipe(plugins.rename((path) => path.extname = '.opf'))
+            // .pipe(plugins.changed(dest))
             .pipe(gulp.dest(dest))
             .on('end', () => done())
     }
