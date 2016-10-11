@@ -91,8 +91,9 @@ export default function(gulp, plugins, browserSync, options) {
             }))
             .pipe(plugins.replace(type.strict, type.html))
             .pipe(gulp.dest(dest))
-            .on('end', browserSync.reload)
-
-        done()
+            .on('end', () => {
+                browserSync.reload
+                done()}
+            )
     }
 }

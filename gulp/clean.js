@@ -13,7 +13,6 @@ export default function(gulp, plugins, browserSync, options) {
             path.join(dirs.destination, `${title}_${options.date}`),
             path.join(dirs.destination, `${title}_${options.date}.epub`),
             path.resolve(dirs.temporary)
-        ])
-        done()
+        ]).then(() => done())
     }
 }

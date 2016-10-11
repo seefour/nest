@@ -24,6 +24,6 @@ export default function(gulp, plugins, browserSync, options) {
                 })]
             })))
             .pipe(gulp.dest(dest))
-        done()
+            .on('end', () => done())
     }
 }

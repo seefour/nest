@@ -28,6 +28,6 @@ export default function(gulp, plugins, browserSync, options) {
                     process.exit(1)
                 }
             })
-        done()
+            .on('end', () => done())
     }
 }

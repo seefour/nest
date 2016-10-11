@@ -25,6 +25,6 @@ export default function(gulp, plugins, browserSync, options) {
             }))
             .pipe(plugins.rename((path) => path.extname = '.xml'))
             .pipe(gulp.dest(dest))
-        done()
+            .on('end', () => done())
     }
 }
