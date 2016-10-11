@@ -1,7 +1,6 @@
 'use strict'
 
 import path from 'path'
-import es from 'event-stream'
 import glob from 'glob'
 import browserify from 'browserify'
 import watchify from 'watchify'
