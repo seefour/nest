@@ -42,17 +42,20 @@ const options = {
 }
 
 // gulp task files
-const taskPath = './gulp'
+const taskPath = path.resolve('./gulp')
 
 // task getter
 function getTask(name) {
-    return require(`${taskPath}/${name}`)(gulp, plugins(), browserSync, options)
+    return require(path.join(taskPath, name))(gulp, plugins(), browserSync, options)
 }
 
 // define all tasks in taskPath
 fs.readdirSync(taskPath)
+    // only include .js files
     .filter((filename) => filename.match(/\.js$/i))
+    // get just the basename (no extension)
     .map((filename) => path.basename(filename, '.js'))
+    // define the task
     .forEach((task) => gulp.task(task, getTask(task)))
 
 /* TASK SEQUENCE DEFINITIONS */
@@ -64,10 +67,7 @@ gulp.task('build',
 
 // EPUB-related tasks
 gulp.task('epub',
-    gulp.series(
-        gulp.parallel('epub-container', 'epub-manifest'),
-        'epub-zip'
-    )
+    gulp.parallel('epub-container', 'epub-manifest', 'epub-mimetype')
 )
 
 // Server tasks with watch
@@ -77,5 +77,5 @@ gulp.task('serve',
 
 // Default task
 gulp.task('default',
-    gulp.series('clean', 'build', 'epub')
+    gulp.series('clean', 'build', 'epub', 'zip')
 )
