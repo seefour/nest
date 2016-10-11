@@ -31,9 +31,9 @@ export default function(gulp, plugins, browserSync, options) {
             })))
             .pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
             .pipe(gulp.dest(dest))
+            .on('end', () => done())
             .pipe(browserSync.stream({
                 match: '**/*.css'
             }))
-        done()
     }
 }
