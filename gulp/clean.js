@@ -11,7 +11,7 @@ export default function(gulp, plugins, browserSync, options) {
     return (done) => {
             del([
             path.join(dirs.destination, `${title}_${options.date}`),
-            path.join(dirs.destination, `${title}_${options.date}.epub`),
+            path.join(dirs.destination, `${title}_${options.date}.*`),
             path.resolve(dirs.temporary)
         ]).then(() => done())
     }
