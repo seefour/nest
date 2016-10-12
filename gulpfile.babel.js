@@ -80,5 +80,5 @@ gulp.task('serve',
 
 // Default task
 gulp.task('default',
-    gulp.series('clean', 'build', 'epub', 'zip')
+    gulp.series('clean', 'build', 'epub')
 )
