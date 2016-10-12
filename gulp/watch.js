@@ -1,43 +1,43 @@
-'use strict';
+'use strict'
 
-import path from 'path';
+import path from 'path'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
+export default function(gulp, plugins, browserSync, options) {
+    let args = options.args
+    let dirs = options.config.directories
 
     // Watch task
-    gulp.task('watch', () => {
+    return (done) => {
         if (!args.production) {
             // Styles
             gulp.watch([
                 path.join(dirs.source, dirs.styles, '**/*.{scss,sass}')
-            ], ['sass']);
+            ], gulp.parallel('sass'))
 
-            // Jade Templates
+            // Pug
             gulp.watch([
-                path.join(dirs.source, '**/*.jade'),
-                path.join(dirs.source, '**/*.pug'),
+                path.join(dirs.source, '**/*.{jade,pug}'),
                 path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
-            ], ['pug']);
+            ], gulp.parallel('pug'))
 
             // Copy
             gulp.watch([
                 path.join(dirs.source, '**/*'),
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
-                '!' + path.join(dirs.source, '**/*.jade'),
-                '!' + path.join(dirs.source, '**/*.pug')
-            ], ['copy']);
+                '!' + path.join(dirs.source, '**/*.{jade,pug}')
+            ], gulp.parallel('copy'))
 
             // Images
             gulp.watch([
                 path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}')
-            ], ['imagemin']);
+            ], gulp.parallel('imagemin'))
 
             // All other files
             gulp.watch([
                 path.join(dirs.temporary, '**/*'),
-                '!' + path.join(dirs.temporary, '**/*.{css,map,html,js,json}')
-            ]).on('change', browserSync.reload);
+                '!' + path.join(dirs.temporary, '**/*.{css,map,html,xhtml,js,json}')
+            ]).on('change', browserSync.reload)
         }
-    });
+        done()
+    }
 }

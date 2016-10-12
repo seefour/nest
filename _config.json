@@ -1,7 +1,7 @@
 {
     "host": "127.0.0.1",
     "port": "3000",
-    "baseUrl": "./",
+    "baseUrl": "OEBPS/index.xhtml",
     "metadata": {
         "title": "nest",
         "description": "The Norton Ebook Standards Toolkit",
@@ -15,7 +15,8 @@
         "modified": ""
     },
     "production": {
-        "baseUrl": "//moria.wwnorton.com/sandbox/evan/nest/"
+        "baseUrl": "//moria.wwnorton.com/sandbox/evan/nest/OEBPS/index.xhtml",
+        "epubcheck": "$HOME/downloads/epubcheck-4.0.1/epubcheck.jar"
     },
     "directories": {
         "source": "src",
@@ -25,16 +26,19 @@
         "container": "META-INF",
         "//": "Directories relative to `source` directory",
         "modules": "_modules",
-        "layouts": "_layouts",
         "images": "_images",
         "styles": "_styles",
         "scripts": "_scripts",
+        "data": "data",
         "content": "_content",
-        "data": "data"
+        "//": "Directories relative to `content` directory",
+        "layouts": "_layouts",
+        "html": "_html"
     },
     "entries": {
-        "js": "{[^_]**/*.js,[^_]*.js}",
         "css": "{[^_]**/*.{sass,scss},[^_]*.{sass,scss}}",
+        "html": "*.{jade,pug}",
+        "js": "{[^_]**/*.js,[^_]*.js}",
         "manifest": "package.pug",
         "container": "container.pug"
     }

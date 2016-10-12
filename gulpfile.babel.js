@@ -1,76 +1,84 @@
 'use strict';
 
-import path from 'path';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import browserSyncLib from 'browser-sync';
-import configJSON from './_config.json';
-import minimist from 'minimist';
-import wrench from 'wrench';
+import gulp from 'gulp'
+import path from 'path'
+import fs from 'fs'
+import plugins from 'gulp-load-plugins'
+import minimist from 'minimist'
+import bs from 'browser-sync'
 
-// Load all gulp plugins based on their names
-// EX: gulp-copy -> copy
-const plugins = gulpLoadPlugins();
-// Create karma server
-const KarmaServer = require('karma').Server;
+// primary configuration file
+import configFile from './_config.json'
 
-const defaultNotification = function (err) {
-  return {
-    subtitle: err.plugin,
-    message: err.message,
-    sound: 'Funk',
-    onLast: true,
-  };
-};
+// the default gulp-notify options
+const defaultNotification = function(err) {
+    return {
+        subtitle: err.plugin,
+        message: err.message,
+        sound: 'default',
+        onLast: true,
+    }
+}
 
-let config = Object.assign({}, configJSON, defaultNotification);
+const config = Object.assign({}, configFile, defaultNotification)
 
-let args = minimist(process.argv.slice(2));
-let dirs = config.directories;
-let date = new Date().toJSON().slice(0,10)
-let taskTarget = args.production ? `${dirs.destination}_${date}` : dirs.temporary;
+// create browserSync instance
+const browserSync = bs.create()
 
-// Create a new browserSync instance
-let browserSync = browserSyncLib.create();
+// get command line arguments
+const args = minimist(process.argv.slice(2))
 
-// This will grab all js in the `gulp` directory
-// in order to load all gulp tasks
-wrench.readdirSyncRecursive('./gulp').filter((file) => {
-  return (/\.(js)$/i).test(file);
-}).map(function (file) {
-  require('./gulp/' + file)(gulp, plugins, args, config, taskTarget, browserSync);
-});
+// initialize the date (YYY-MM-DD) for use in build directory name
+const date = new Date().toJSON().slice(0, 10)
 
-// Default task
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
-});
+// construct options object
+const options = {
+    args: args,
+    config: config,
+    date: date,
+    target: args.production ?
+        path.join(config.directories.destination, `${config.metadata.title}_${date}`) :
+        config.directories.temporary
+}
+
+// gulp task files
+const taskPath = path.resolve('./gulp')
+
+// task getter
+function getTask(name) {
+    return require(path.join(taskPath, name))(gulp, plugins(), browserSync, options)
+}
+
+// define all tasks in taskPath
+fs.readdirSync(taskPath)
+    // only include .js files
+    .filter((filename) => filename.match(/\.js$/i))
+    // get just the basename (no extension)
+    .map((filename) => path.basename(filename, '.js'))
+    // define the task
+    .forEach((task) => gulp.task(task, getTask(task)))
+
+/* TASK SEQUENCE DEFINITIONS */
 
 // Build production-ready code
-gulp.task('build', [
-  'copy',
-  'imagemin',
-  'pug',
-  'sass',
-  'browserify'
-]);
+gulp.task('build',
+    gulp.parallel('copy', 'imagemin', 'pug', 'sass', 'browserify')
+)
+
+// EPUB-related tasks
+gulp.task('epub',
+    gulp.series(
+        gulp.parallel('epub:container', 'epub:manifest', 'epub:mimetype'),
+        'epub:validate'
+    )
+)
 
 // Server tasks with watch
-gulp.task('serve', [
-  'imagemin',
-  'copy',
-  'pug',
-  'sass',
-  'browserify',
-  'browserSync',
-  'watch'
-]);
+gulp.task('serve',
+    gulp.parallel('imagemin', 'copy', 'pug', 'sass', 'browserify', 'browserSync', 'watch')
+)
 
-// Testing
-gulp.task('test', ['eslint'], (done) => {
-  new KarmaServer({
-    configFile: path.join(__dirname, '/karma.conf.js'),
-    singleRun: !args.watch,
-    autoWatch: args.watch
-  }, done).start();
-});
+// Default task
+gulp.task('default',
+    gulp.series('clean', 'build', 'epub')
+)

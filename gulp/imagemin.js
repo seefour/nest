@@ -1,18 +1,20 @@
-'use strict';
+'use strict'
 
-import path from 'path';
-import gulpif from 'gulp-if';
-import pngquant from 'imagemin-pngquant';
+import path from 'path'
+import pngquant from 'imagemin-pngquant'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
-    let dest = path.join(taskTarget, dirs.main, dirs.images.replace(/^_/, ''));
+export default function(gulp, plugins, browserSync, options) {
+    let args = options.args
+    let config = options.config
+    let dirs = config.directories
+    let entries = config.entries
+    let dest = path.join(options.target, dirs.main, dirs.images.replace(/^_/, ''))
 
     // Imagemin
-    gulp.task('imagemin', () => {
-        return gulp.src(path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'))
+    return (done) => {
+        gulp.src(path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'))
             .pipe(plugins.changed(dest))
-            .pipe(gulpif(args.production, plugins.imagemin({
+            .pipe(plugins.if(args.production, plugins.imagemin({
                 progressive: true,
                 svgoPlugins: [{
                     removeViewBox: false
@@ -21,6 +23,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                     speed: 10
                 })]
             })))
-            .pipe(gulp.dest(dest));
-    });
+            .pipe(gulp.dest(dest))
+            .on('end', () => done())
+    }
 }

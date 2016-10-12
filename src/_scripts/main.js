@@ -30,10 +30,6 @@ window.Swiper = Swiper
 import Annotate from './_modules/annotate/annotate.js'
 window.Annotate = Annotate
 
-// segment initializer
-import Segment from './_modules/segment/segment.js'
-window.Segment = Segment
-
 $(() => {
     // initialize annotate (tooltips) with default options
     $('.keyterm').annotate()

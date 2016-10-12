@@ -1,23 +1,24 @@
-'use strict';
+'use strict'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
+export default function(gulp, plugins, browserSync, options) {
     // BrowserSync
-    gulp.task('browserSync', () => {
+    return (done) => {
         browserSync.init({
-            open: args.open ? 'local' : false,
-            startPath: config.baseUrl,
-            port: config.port || 3000,
+            open: options.args.open ? 'local' : false,
+            startPath: options.config.baseUrl,
+            port: options.config.port || 3000,
             server: {
-                baseDir: taskTarget,
+                baseDir: options.target,
                 routes: (() => {
-                    let routes = {};
+                    let routes = {}
 
                     // Map base URL to routes
-                    routes[config.baseUrl] = taskTarget;
+                    routes[options.config.baseUrl] = options.target
 
-                    return routes;
+                    return routes
                 })()
             }
-        });
-    });
+        })
+        done()
+    }
 }

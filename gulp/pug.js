@@ -1,49 +1,53 @@
-'use strict';
+'use strict'
 
-import fs from 'fs';
-import path from 'path';
-import foldero from 'foldero';
-import pug from 'pug';
-import yaml from 'js-yaml';
+import fs from 'fs'
+import path from 'path'
+import foldero from 'foldero'
+import pug from 'pug'
+import yaml from 'js-yaml'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
-    let dest = path.join(taskTarget, dirs.main);
-    let dataPath = path.join(dirs.source, dirs.data);
+export default function(gulp, plugins, browserSync, options) {
+    let args = options.args
+    let config = options.config
+    let dirs = config.directories
+    let entries = config.entries
+
+    let dest = path.join(options.target, dirs.main)
+    let dataPath = path.join(dirs.source, dirs.data)
 
     // Pug template compile (formerly Jade)
-    gulp.task('pug', () => {
-        let bookData = {};
+    return (done) => {
+        let bookData = {}
         if (fs.existsSync(dataPath)) {
             // Convert directory to JS Object
             bookData = foldero(dataPath, {
                 recurse: true,
                 whitelist: '(.*/)*.+\.(json|ya?ml)$',
                 loader: function loadAsString(file) {
-                    let json = {};
+                    let json = {}
                     try {
                         if (path.extname(file).match(/^.ya?ml$/)) {
-                            json = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
+                            json = yaml.safeLoad(fs.readFileSync(file, 'utf8'))
                         } else {
-                            json = JSON.parse(fs.readFileSync(file, 'utf8'));
+                            json = JSON.parse(fs.readFileSync(file, 'utf8'))
                         }
                     } catch (e) {
-                        console.log('Error Parsing DATA file: ' + file);
-                        console.log('==== Details Below ====');
-                        console.log(e);
+                        console.log('Error Parsing DATA file: ' + file)
+                        console.log('==== Details Below ====')
+                        console.log(e)
                     }
-                    return json;
+                    return json
                 }
-            });
+            })
         }
 
         // Add --debug option to your gulp task to view
         // what data is being loaded into your templates
         if (args.debug) {
-            console.log('==== DEBUG: book.data being injected to templates ====');
-            console.log(bookData);
-            console.log('\n==== DEBUG: _config.json being injected to templates ====');
-            console.log(config);
+            console.log('==== DEBUG: book.data being injected to templates ====')
+            console.log(bookData)
+            console.log('\n==== DEBUG: _config.json being injected to templates ====')
+            console.log(config)
         }
 
         // Use the production config elements when appropriate
@@ -57,9 +61,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             html: '<!DOCTYPE html>'
         }
 
-        return gulp.src(path.join(dirs.source, dirs.content, '*.{jade,pug}'))
+        gulp.src(path.join(dirs.source, dirs.content, entries.html))
             .pipe(plugins.changed(dest))
-            .pipe(plugins.plumber())
             .pipe(plugins.data(function(file) {
                 return {
                     book: {
@@ -83,11 +86,14 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 keepClosingSlash: true,
                 caseSensitive: true
             }))
-            .pipe(plugins.rename(function(path){
+            .pipe(plugins.rename((path) => {
                 path.extname = '.xhtml'
             }))
             .pipe(plugins.replace(type.strict, type.html))
             .pipe(gulp.dest(dest))
-            .on('end', browserSync.reload);
-    });
+            .on('end', () => {
+                browserSync.reload
+                done()}
+            )
+    }
 }

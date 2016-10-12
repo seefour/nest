@@ -1,14 +1,18 @@
-'use strict';
+'use strict'
 
-import path from 'path';
-import del from 'del';
+import path from 'path'
+import del from 'del'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
+export default function(gulp, plugins, browserSync, options) {
+    let dirs = options.config.directories
+    let title = options.config.metadata.title
 
     // Clean
-    gulp.task('clean', del.bind(null, [
-        path.join(dirs.temporary),
-        path.join(dirs.destination)
-    ]));
+    return (done) => {
+            del([
+            path.join(dirs.destination, `${title}_${options.date}`),
+            path.join(dirs.destination, `${title}_${options.date}.*`),
+            path.resolve(dirs.temporary)
+        ]).then(() => done())
+    }
 }

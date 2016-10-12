@@ -1,20 +1,18 @@
 /*eslint no-process-exit:0 */
 
-'use strict';
+'use strict'
 
-import path from 'path';
-import gulpif from 'gulp-if';
+import path from 'path'
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-    let dirs = config.directories;
+export default function(gulp, plugins, browserSync, options) {
+    let args = options.args
+    let dirs = options.config.directories
 
     // ESLint
-    gulp.task('eslint', () => {
+    return (done) => {
         gulp.src([
-                path.join('gulpfile.js'),
-                path.join(dirs.source, '**/*.js'),
-                // Ignore all vendor folder files
-                '!' + path.join('**/vendor/**', '*')
+                path.join('gulpfile.babel.js'),
+                path.join(dirs.source, '**/*.js')
             ])
             .pipe(browserSync.reload({
                 stream: true,
@@ -24,11 +22,12 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
                 useEslintrc: true
             }))
             .pipe(plugins.eslint.format())
-            .pipe(gulpif(!browserSync.active, plugins.eslint.failAfterError()))
+            .pipe(plugins.if(!browserSync.active, plugins.eslint.failAfterError()))
             .on('error', function() {
                 if (!browserSync.active) {
-                    process.exit(1);
+                    process.exit(1)
                 }
-            });
-    });
+            })
+            .on('end', () => done())
+    }
 }
