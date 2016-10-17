@@ -56,7 +56,7 @@ fs.readdirSync(taskPath)
     // get just the basename (no extension)
     .map((filename) => path.basename(filename, '.js'))
     // define the task
-    .forEach((task) => gulp.task(task, getTask(task)))
+    .forEach((task) => gulp.task(task.replace('-', ':'), getTask(task)))
 
 /* TASK SEQUENCE DEFINITIONS */
 

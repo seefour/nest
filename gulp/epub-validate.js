@@ -1,6 +1,8 @@
 'use strict';
 
-import {exec} from 'child_process'
+import {
+    exec
+} from 'child_process'
 
 export default function(gulp, plugins, browserSync, options) {
     const dirs = options.config.directories
