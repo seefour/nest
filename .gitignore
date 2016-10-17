@@ -55,4 +55,5 @@ tmp
 
 # Fonts
 src/fonts/*
+!src/fonts/.gitkeep
 glyphicons*
