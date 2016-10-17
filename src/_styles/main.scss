@@ -3,7 +3,7 @@
 
 // PhotoSwipe
 @import 'node_modules/photoswipe/src/css/main';
-@import 'node_modules/photoswipe/src/css/default-skin/default-skin';
+@import '_vendor/photoswipe/photoswipe-ui';
 
 // Custom
 @import '_components/helpers';
