@@ -5,3 +5,5 @@ linters:
         max_depth: 4
     SelectorFormat:
         convention: hyphenated_BEM
+    PropertySortOrder:
+        enabled: false
