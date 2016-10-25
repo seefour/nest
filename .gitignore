@@ -52,6 +52,7 @@ tmp
 
 # Demo files
 .demo
+_*.pug
 
 # Fonts
 src/fonts/*
