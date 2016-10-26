@@ -15,6 +15,15 @@ export default function(gulp, plugins, browserSync, options) {
     let dest = path.join(options.target, dirs.main)
     let dataPath = path.join(dirs.source, dirs.data)
 
+    // html-tidy options
+    let htmltidyOpts = {
+        doctype: 'html5',
+        indent: true,
+        indentSpaces: 4,
+        numericEntities: true,
+        wrap: 0
+    }
+
     // Pug template compile (formerly Jade)
     return (done) => {
         let bookData = {}
@@ -55,12 +64,6 @@ export default function(gulp, plugins, browserSync, options) {
             config.baseUrl = config.production.baseUrl
         }
 
-        // hack to get around pug's epub-invlaid strict doctype
-        let type = {
-            strict: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
-            html: '<!DOCTYPE html>'
-        }
-
         gulp.src(path.join(dirs.source, dirs.content, entries.html))
             .pipe(plugins.changed(dest))
             .pipe(plugins.data(function(file) {
@@ -77,23 +80,14 @@ export default function(gulp, plugins, browserSync, options) {
                 pug: pug,
                 pretty: true
             }))
-            .pipe(plugins.htmlmin({
-                collapseBooleanAttributes: false,
-                conservativeCollapse: true,
-                removeCommentsFromCDATA: true,
-                removeEmptyAttributes: true,
-                removeRedundantAttributes: true,
-                keepClosingSlash: true,
-                caseSensitive: true
-            }))
             .pipe(plugins.rename((path) => {
                 path.extname = '.xhtml'
             }))
-            .pipe(plugins.replace(type.strict, type.html))
+            .pipe(plugins.htmltidy(htmltidyOpts))
             .pipe(gulp.dest(dest))
             .on('end', () => {
                 browserSync.reload
-                done()}
-            )
+                done()
+            })
     }
 }
