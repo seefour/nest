@@ -4,14 +4,30 @@
     "baseUrl": "OEBPS/index.xhtml",
     "metadata": {
         "title": "nest",
-        "description": "The Norton Ebook Standards Toolkit",
-        "creator": "",
-        "id": "",
-        "format": "",
-        "type": "",
+        "identifier": {
+            "id": "ebook-isbn",
+            "isbn": ""
+        },
         "language": "en-US",
-        "rights": "",
+        "creator": {
+            "id": "",
+            "name": "",
+            "role": ""
+        },
+        "contributor": {
+            "id": "",
+            "name": "",
+            "role": ""
+        },
         "publisher": "W. W. Norton and Company",
+        "date": "",
+        "subject": {
+            "bisac-code": "",
+            "bisac-heading": ""
+        },
+        "description": "The Norton Ebook Standards Toolkit",
+        "rights": "",
+        "source": "",
         "modified": ""
     },
     "production": {
