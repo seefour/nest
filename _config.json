@@ -16,7 +16,7 @@
     },
     "production": {
         "baseUrl": "//moria.wwnorton.com/sandbox/evan/nest/OEBPS/index.xhtml",
-        "epubcheck": "./epubcheck-4.0.1/epubcheck.jar"
+        "epubcheck": "./epubcheck/epubcheck.jar"
     },
     "directories": {
         "source": "src",
