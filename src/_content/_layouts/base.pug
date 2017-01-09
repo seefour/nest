@@ -41,7 +41,9 @@ body
     block content
 
     block scripts
-        script(src='scripts/main.js')
+        if scripted
+            script(src="scripts/vendor.js")
+            script(src="scripts/main.js")
         if custom.js
             script(src=`scripts/custom/${filename}.js`)
 
