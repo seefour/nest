@@ -1,6 +1,6 @@
 'use strict'
 
-export default function(gulp, plugins, browserSync, options) {
+export default function(gulp, p, browserSync, options) {
     // BrowserSync
     return (done) => {
         browserSync.init({

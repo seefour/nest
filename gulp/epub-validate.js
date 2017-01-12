@@ -1,10 +1,8 @@
 'use strict';
 
-import {
-    exec
-} from 'child_process'
+import { exec } from 'child_process'
 
-export default function(gulp, plugins, browserSync, options) {
+export default function(gulp, p, browserSync, options) {
     const dirs = options.config.directories
     const epubcheck = options.config.production.epubcheck
     const report = (options.target === dirs.temporary) ? `${options.target}/report.xml` : `${options.target}.report.xml`

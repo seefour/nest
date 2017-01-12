@@ -3,9 +3,9 @@
 import path from 'path'
 import del from 'del'
 
-export default function(gulp, plugins, browserSync, options) {
-    let dirs = options.config.directories
-    let title = options.config.metadata.title
+export default function(gulp, p, browserSync, options) {
+    const dirs = options.config.directories
+    const title = options.config.metadata.productcode
 
     // Clean
     return (done) => {

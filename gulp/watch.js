@@ -2,9 +2,9 @@
 
 import path from 'path'
 
-export default function(gulp, plugins, browserSync, options) {
-    let args = options.args
-    let dirs = options.config.directories
+export default function(gulp, p, browserSync, options) {
+    const args = options.args
+    const dirs = options.config.directories
 
     // Watch task
     return (done) => {
@@ -24,7 +24,7 @@ export default function(gulp, plugins, browserSync, options) {
             gulp.watch([
                 path.join(dirs.source, '**/*'),
                 '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
-                '!' + path.join(dirs.source, '**/*.{jade,pug}')
+                '!' + path.join(dirs.source, '**/*.{jade,pug,scss,sass}')
             ], gulp.parallel('copy'))
 
             // Images

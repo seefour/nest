@@ -3,19 +3,19 @@
 import path from 'path'
 import pug from 'pug'
 
-export default function(gulp, plugins, browserSync, options) {
-    let config = options.config
-    let dirs = config.directories
-    let entries = config.entries
+export default function(gulp, p, browserSync, options) {
+    const config = options.config
+    const dirs = config.directories
+    const entries = config.entries
 
-    let template = path.join(dirs.source, dirs.content, dirs.layouts, entries.container)
-    let dest = path.join(options.target, dirs.container)
+    const template = path.join(dirs.source, dirs.content, dirs.layouts, entries.container)
+    const dest = path.join(options.target, dirs.container)
 
     // Container -> ./META-INF/container.xml
     return (done) => {
         gulp.src(template)
-            .pipe(plugins.changed(dest))
-            .pipe(plugins.pug({
+            .pipe(p.changed(dest))
+            .pipe(p.pug({
                 pug: pug,
                 pretty: true,
                 locals: {
@@ -23,7 +23,9 @@ export default function(gulp, plugins, browserSync, options) {
                     debug: true
                 }
             }))
-            .pipe(plugins.rename((path) => path.extname = '.xml'))
+            .pipe(p.rename({
+                extname: '.xml'
+            }))
             .pipe(gulp.dest(dest))
             .on('end', () => done())
     }

@@ -4,9 +4,8 @@
 
 import path from 'path'
 
-export default function(gulp, plugins, browserSync, options) {
-    let args = options.args
-    let dirs = options.config.directories
+export default function(gulp, p, browserSync, options) {
+    const dirs = options.config.directories
 
     // ESLint
     return (done) => {
@@ -18,11 +17,11 @@ export default function(gulp, plugins, browserSync, options) {
                 stream: true,
                 once: true
             }))
-            .pipe(plugins.eslint({
+            .pipe(p.eslint({
                 useEslintrc: true
             }))
-            .pipe(plugins.eslint.format())
-            .pipe(plugins.if(!browserSync.active, plugins.eslint.failAfterError()))
+            .pipe(p.eslint.format())
+            .pipe(p.if(!browserSync.active, p.eslint.failAfterError()))
             .on('error', function() {
                 if (!browserSync.active) {
                     process.exit(1)
