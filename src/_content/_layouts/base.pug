@@ -4,14 +4,16 @@ include ../_mixins/images
 
 //- Custom Configuration
 block config
-    - var meta = config.metadata
-    - var baseUrl = config.baseUrl || './'
-    - var title = meta.title
-    - var desc = meta.description
-    - var custom = { css: false, js: false }
-
+    - let meta = config.metadata
+    - let baseUrl = config.baseUrl || "./"
+    - let title = meta.title
+    - let desc = meta.description || ""
     - let position = null
+    - let linear = "yes"
     - let body = { class: null, type: null }
+    - let custom = { css: false, js: false }
+    - let scripted = true
+    
 //- add xml doctype manually so pug doesn't think we're using it
 <?xml version="1.0" encoding="utf-8"?>
 
