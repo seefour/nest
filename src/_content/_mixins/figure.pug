@@ -1,0 +1,88 @@
+//- ID (string): photo id in src/data/_images.json
+//- type (string): "image", "gallery", or "video". undefined will default to "image"
+//- modifier (string): any arbitrary modifier class that differentiates this figure
+//-     note: the "gallery" modifier is the only modifier that is handled differently
+//- linked (boolean): whether or not the image should be placed inside an anchor
+
+//- EXAMPLE
+//- +figure("nebula", "image", "fullbleed") will output:
+//- <figure class="figure figure--fullbleed" data-figure="nebula">
+//-     <a class="figure__link" href="images/nebula-full.jpg" data-size="1920x1080">
+//-         <img class="figure__thumbnail" src="images/nebula-small.jpg" alt="..." />
+//-     </a>
+//-     <figcaption class="figure__caption">...</figcaption>
+//- </figure>
+
+include components/caption
+include components/figure
+include components/image
+include components/title
+include components/video
+include components/tablist
+include components/tabpane
+
+mixin figure(ID, type, modifier, linked)
+    - let root = "figure"
+    - let figureType = (typeof type === "string") ? `${root}--${type}` : ""
+    - let modified = (typeof modifier === "string") ? `${root}--${modifier}` : ""
+    - let figureClass = [ root, figureType, modified ]
+    - let responsive = null
+
+    if (!type || type === "image")
+        each item in book.data._images
+            if (item.id === ID)
+                - item.root = root
+                - item.figureClass = figureClass
+                - item.type = "http://schema.org/ImageObject"
+                - item.responsive = responsive
+                - item.linked = linked
+                +figure-image(item)
+
+    if (type === "video")
+        each item in book.data._videos
+            if (item.id === ID)
+                - item.root = root
+                - item.figureClass = figureClass
+                - item.type = "http://schema.org/VideoObject"
+                +figure-video(item)
+
+    if (type === "gallery")
+        each gallery in book.data._galleries
+            if (gallery.id === ID)
+                - gallery.root = root
+                - gallery.figureClass = figureClass
+                - gallery.type = "http://schema.org/ImageGallery"
+                +figure-el(gallery)
+                    if (gallery.title)
+                        +title-el(gallery)
+                    each imageID in gallery.images
+                        each item in book.data._images
+                            if (item.id === imageID)
+                                - item.root = root
+                                - item.figureClass = root
+                                - item.type = "http://schema.org/ImageObject"
+                                - item.responsive = responsive
+                                - item.linked = linked
+                                +figure-image(item)
+
+//- figure>([figcaption.title]+img+[figcaption.caption])
+mixin figure-image(item)
+    +figure-el(item)
+        if (item.title)
+            +title-el(item)
+        +image-el(item)
+        if (item.caption !== undefined && item.caption.length > 0)
+            +caption-el(item)
+
+//- figure>([figcaption.title]+(video>(source+track))+(div.tablist>ul(li*n>a))+(figcaption.tabpane>div.pane*n))
+mixin figure-video(item)
+    +figure-el(item)
+        if (item.title)
+            +title-el(item)
+        +video-el(item)
+        if (item.caption && item.tracks.length > 0)
+            - let caption = { id:`${item.id}-caption`,title:"Caption",type:"caption",content:item.caption }
+            - let transcript = { id:`${item.id}-transcript`,title:"Transcript",type:"transcript" }
+            - let tabs = [ caption, transcript ]
+            +tablist('tabs', tabs)
+            +tabpane('tabs', tabs, true)

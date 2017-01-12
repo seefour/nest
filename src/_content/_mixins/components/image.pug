@@ -1,0 +1,19 @@
+mixin image-el(item)
+    if (item.linked)
+        a(
+            class= `${item.root}__link`,
+            data-href= `images/${item.full}`,
+            tabindex= "0",
+            data-size= `${item.width}x${item.height}`
+            )
+            img(
+                class= `${item.root}__thumbnail`,
+                src= `images/${(item.responsive) ? item.small : item.full}`,
+                alt= item.alt
+                )
+    else
+        img(
+            class= `${item.root}__image`,
+            src= `images/${(item.responsive) ? item.medium : item.full}`,
+            alt= item.alt
+            )
