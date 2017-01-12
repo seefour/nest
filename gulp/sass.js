@@ -2,38 +2,53 @@
 
 import path from 'path'
 import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
 
-export default function(gulp, plugins, browserSync, options) {
-    let args = options.args
-    let config = options.config
-    let dirs = config.directories
-    let entries = config.entries
-    let dest = path.join(options.target, dirs.main, dirs.styles.replace('_', ''))
+export default function(gulp, p, browserSync, options) {
+    const args = options.args
+    const config = options.config
+    const dirs = config.directories
+    const entries = config.entries
+    const dest = path.join(options.target, dirs.main, dirs.styles.replace('_', ''))
 
-    // Sass compilation
+    // autoprefixer support matrix
+    const supported = [
+        'last 2 version',
+        '> 5%',
+        'safari 5',
+        'ios 6',
+        'android 4'
+    ]
+
+    // postcss configuration
+    const processors = (args.production) ? [
+        autoprefixer(supported),
+        cssnano({
+            safe: true
+        })
+    ] : [
+        autoprefixer(supported)
+    ]
+
+    // Sass
     return (done) => {
-        gulp.src(path.join(dirs.source, dirs.styles, entries.css))
-            .pipe(plugins.changed(dest))
-            .pipe(plugins.sourcemaps.init())
-            .pipe(plugins.sass({
+        gulp.src(path.join(dirs.source, dirs.styles, entries.css), {
+                base: path.join(dirs.source, dirs.styles)
+            })
+            .pipe(p.if(!args.production, p.sourcemaps.init()))
+            .pipe(p.sass({
                 outputStyle: 'expanded',
                 precision: 10
             }))
-            .on('error', function(err) {
-                plugins.util.log(err)
-            })
-            .on('error', plugins.notify.onError(config.defaultNotification))
-            .pipe(plugins.postcss([autoprefixer({
-                browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4']
-            })]))
-            .pipe(plugins.if(args.production, plugins.cssnano({
-                rebase: false
-            })))
-            .pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
+            .on('error', p.notify.onError(config.notification))
+            .pipe(p.postcss(processors))
+            .pipe(p.if(!args.production, p.sourcemaps.write('./')))
             .pipe(gulp.dest(dest))
-            .on('end', () => done())
-            .pipe(browserSync.stream({
-                match: '**/*.css'
-            }))
+            .on('end', () => {
+                browserSync.stream({
+                    match: '**/*.css'
+                })
+                done()
+            })
     }
 }
