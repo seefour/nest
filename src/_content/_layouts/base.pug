@@ -10,6 +10,8 @@ block config
     - var desc = meta.description
     - var custom = { css: false, js: false }
 
+    - let position = null
+    - let body = { class: null, type: null }
 //- add xml doctype manually so pug doesn't think we're using it
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -33,6 +35,7 @@ head
         if custom.css
             link(rel='stylesheet', href=`styles/custom/${filename}.css`)
 body
+body(class=body.class,epub:type=body.type,data-position=position)
     <!--[if lt IE 9]>
     .alert.alert-warning(role='alert')
         .container You are using an #[strong outdated] browser. Please #[a(href='http://browsehappy.com/') upgrade your browser] to improve your experience.
