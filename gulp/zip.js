@@ -2,13 +2,13 @@
 
 import path from 'path'
 
-export default function(gulp, plugins, browserSync, options) {
+export default function(gulp, p, browserSync, options) {
     const dirs = options.config.directories
 
     // only run on production files
     const target = path.join(
         dirs.destination,
-        `${options.config.metadata.title}_${options.date}`
+        `${options.config.metadata.productcode}_${options.build.date.short}`
     )
 
     // epub must start with the mimetype file
@@ -17,10 +17,10 @@ export default function(gulp, plugins, browserSync, options) {
         path.join(target, '**/*')
     ]
 
-    // Zip -> turns build_dir/ into build_dir.epub
+    // Zip -> turns ./build_dir/ into ./build_dir.epub
     return (done) => {
         gulp.src(buildFiles)
-            .pipe(plugins.zip(`${target}.epub`))
+            .pipe(p.zip(`${target}.epub`))
             .pipe(gulp.dest('./'))
             .on('end', () => done())
     }
