@@ -1,32 +1,37 @@
 block vars
-  - var items = 3
-  - var btns = [{name: "close",text: "Close (Esc)",icon: "glyphicons-remove"}, {name: "info",text: "More info",icon: "glyphicons-info-sign"}, {name: "share",text: "Share",icon: "glyphicons-share"}, {name: "fs",text: "Toggle fullscreen",icon: "glyphicons-fullscreen"}, {name: "zoom",text: "Zoom in/out",icon: "glyphicons-zoom-in"}]
+    - let items = 3
+    - let close = {name: "close",text: "Close (Esc)",icon: "glyphicon-remove"}
+    - let info = {name: "info",text: "More info",icon: "glyphicon-info-sign"}
+    - let share = {name: "share",text: "Share",icon: "glyphicon-share"}
+    - let fullscreen = {name: "fs",text: "Toggle fullscreen",icon: "glyphicon-fullscreen"}
+    - let zoom = {name: "zoom",text: "Zoom in/out",icon: "glyphicon-zoom-in"}
+    - let btns = [ close, fullscreen, zoom ]
 
 block pswp
-  .pswp(tabindex="-1",role="dialog",aria-hidden="true")
-    .pswp__bg
-    .pswp__scroll-wrap
-      .pswp__container
-        - var n = 0
-        while n < items
-          .pswp__item
-          - n++
-      .pswp__ui.pswp__ui--hidden
-        .pswp__top-bar
-          .pswp__counter
-          each btn in btns
-            button(class=["pswp__button","pswp__button--"+btn.name],type="button",title=btn.text)
-              +icon(btn.icon, btn.text)
-          .pswp__preloader
-            .pswp__preloader__icn
-              .pswp__preloader__cut
-                .pswp__preloader__donut
-        .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
-          .pswp__share-tooltip
-        button.pswp__button.pswp__button--previous(type="button",title="Previous")
-          +icon('glyphicons-arrow-left', 'Previous')
-        button.pswp__button.pswp__button--next(type="button",title="Next")
-          +icon('glyphicons-arrow-right', 'Next')
-        .pswp__caption
-          .pswp__caption__center
-    .pswp__sidebar
+    .pswp(tabindex="-1",role="dialog",aria-hidden="true")
+        .pswp__bg
+        .pswp__scroll-wrap
+            .pswp__container
+                - let n = 0
+                while n < items
+                    .pswp__item
+                    - n++
+            .pswp__ui.pswp__ui--hidden
+                .pswp__top-bar
+                    .pswp__counter
+                    each btn in btns
+                        button(class=["pswp__button",`pswp__button--${btn.name}`],type="button",title=btn.text)
+                            +icon(btn.icon, btn.text)
+                    .pswp__preloader
+                        .pswp__preloader__icn
+                            .pswp__preloader__cut
+                                .pswp__preloader__donut
+                .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+                    .pswp__share-tooltip
+                button.pswp__button.pswp__button--prev(type="button",title="Previous",tabindex="-1")
+                    +icon('glyphicons-arrow-left', 'Previous')
+                button.pswp__button.pswp__button--next(type="button",title="Next",tabindex="-1")
+                    +icon('glyphicons-arrow-right', 'Next')
+                .pswp__caption
+                    .pswp__caption__center
+        .pswp__sidebar
