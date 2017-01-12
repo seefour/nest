@@ -9,7 +9,7 @@ import babelify from 'babelify'
 import vbuffer from 'vinyl-buffer'
 import vsource from 'vinyl-source-stream'
 
-export default function(gulp, plugins, browserSync, options) {
+export default function(gulp, p, browserSync, options) {
     const args = options.args
     const config = options.config
     const dirs = config.directories
@@ -43,21 +43,22 @@ export default function(gulp, plugins, browserSync, options) {
                 const bundleTask = () => {
                     let startTime = new Date().getTime()
                     b.bundle()
-                        .on('error', plugins.notify.onError(config.defaultNotification))
+                        .on('error', p.notify.onError(config.notification))
                         .pipe(vsource(entry))
                         .pipe(vbuffer())
-                        // sourcemaps for non-production build
-                        .pipe(plugins.if(!args.production, plugins.sourcemaps.init({loadMaps: true})))
+                        // sourcemaps for dev build
+                        .pipe(p.if(!args.production, p.sourcemaps.init({loadMaps: true})))
                         // uglify for production build
-                        .pipe(plugins.if(args.production, plugins.uglify()))
-                        .on('error', plugins.notify.onError(config.defaultNotification))
+                        .pipe(p.if(args.production, p.uglify()))
+                        .on('error', p.notify.onError(config.notification))
                         // src/_scripts/**/*.js -> scripts/**/*.js
-                        .pipe(plugins.rename((filepath) => filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '')))
-                        .pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
+                        .pipe(p.rename((file) => file.dirname = file.dirname.replace(dirs.source, '').replace('_', '')))
+                        .pipe(p.if(!args.production, p.sourcemaps.write('./')))
+                        .pipe(p.sourcemaps.write('./'))
                         .pipe(gulp.dest(dest))
                         .on('end', () => {
                             let time = (new Date().getTime() - startTime) / 1000
-                            console.log(`${plugins.util.colors.cyan(path.relative(path.join(dirs.source, dirs.scripts), entry))} was browserified in ${plugins.util.colors.magenta(time+' s')}`)
+                            console.log(`${p.util.colors.cyan(path.relative(path.join(dirs.source, dirs.scripts), entry))} was browserified in ${p.util.colors.magenta(`${time}s`)}`)
                             // signal completion synchronously for production builds
                             if (files.indexOf(entry) === files.length - 1) done()
                             return browserSync.reload('*.js')
@@ -66,7 +67,7 @@ export default function(gulp, plugins, browserSync, options) {
 
                 if (!args.production) {
                     b.on('update', bundleTask)
-                    b.on('log', plugins.util.log)
+                    b.on('log', p.util.log)
                 }
 
                 return bundleTask()
