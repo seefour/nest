@@ -8,8 +8,7 @@ package(xmlns="http://www.idpf.org/2007/opf",version="3.0",xml:lang="en",unique-
         dc:creator#creator= meta.creator
         dc:identifier#pub-id= meta.id
         dc:language= meta.language
-        //- todo: fix format for validation
-        meta(property="dcterms:modified")= meta.modified
+        meta(property="dcterms:modified")= build.date.long
         dc:publisher= meta.publisher
     manifest
         each file in files
