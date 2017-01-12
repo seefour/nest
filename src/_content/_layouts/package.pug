@@ -11,8 +11,8 @@ package(xmlns="http://www.idpf.org/2007/opf",version="3.0",xml:lang="en",unique-
         meta(property="dcterms:modified")= build.date.long
         dc:publisher= meta.publisher
     manifest
-        each file in files
-            item(id=file.id,href=file.path,media-type=file.type)/
+        each item in files.manifest
+            item(id=item.id,href=item.path,media-type=item.type,properties=item.properties)
     spine
         //- each item in files
         //-     itemref()
