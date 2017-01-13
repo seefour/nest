@@ -25,14 +25,13 @@ import 'bs.tab.js'
 // photoswipe initializer
 import Swiper from './_modules/swiper/swiper.js'
 window.Swiper = Swiper
+// glossary (keyterms) initializer
+import glossary from './_modules/glossary.js'
 
-// annotate (tooltips) initializer
-import Annotate from './_modules/annotate/annotate.js'
-window.Annotate = Annotate
 
 $(() => {
-    // initialize annotate (tooltips) with default options
-    $('.keyterm').annotate()
+    // initialize glossary (keyterms) with default options
+    glossary.initAll('[*|type~=glossref],[epub\\\:type~=glossref]')
 
     // initialize photoswipe galleries and figures with default options
     $('.pswp-gallery').photoswipe()
