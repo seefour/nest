@@ -1,7 +1,8 @@
-// Animation variables and keyframes
-
-// https://material.google.com/motion/duration-easing.html#duration-easing-common-durations
-$animate-duration: (
+/// Animation timings for common transition types
+/// @group Animation
+/// @type Map
+/// @link https://material.google.com/motion/duration-easing.html#duration-easing-common-durations
+$motion-duration: (
     enter: 225ms,
     exit: 195ms,
     collapse: 350ms,    // bootstrap's Collapse.TRANSITION_DURATION
@@ -9,15 +10,16 @@ $animate-duration: (
 );
 
 // https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
-$animate-timing: (
+$motion-timing: (
     standard: cubic-bezier(.4, 0, .2, 1),
     enter: cubic-bezier(0, 0, .2, 1),
     exit: cubic-bezier(.4, 0, 1, 1),
     sharp: cubic-bezier(.4, 0, .6, 1)
 );
+$transition-enter: all map-get($motion-timing, enter) map-get($motion-duration, enter);
+$transition-exit: all map-get($motion-timing, exit) map-get($motion-duration, exit);
 
 // used on :target events to highlight the block
-$color-hl: $brand-info;
 @keyframes highlight {
     from,
     to {
@@ -25,6 +27,7 @@ $color-hl: $brand-info;
     }
 
     50% {
-        background-color: $color-hl;
+        background-color: $brand-info;
     }
 }
+
