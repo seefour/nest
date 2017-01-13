@@ -1,0 +1,11 @@
+// generates more robust epub:type selectors
+// @include epub('glossref') {
+//     font-weight: 700;
+// }
+
+@mixin epub($type) {
+    [epub\:type~=#{$type}],
+    [*|type~=#{$type}] {
+        @content
+    }
+}
