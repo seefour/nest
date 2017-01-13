@@ -1,0 +1,15 @@
+extends base
+
+append config
+    - title = "Contents"
+    - body.type = "frontmatter"
+    - position = "0.0.0"
+    - linear = "no"
+    - scripted = false
+
+block content
+    nav(xmlns:epub="http://www.idpf.org/2007/ops", epub:type="toc", id="nav-doc")
+        h1 Contents
+        ol
+            each item in files
+                li #[a(href=item.path)= item.title]
