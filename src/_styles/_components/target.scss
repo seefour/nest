@@ -1,13 +1,3 @@
-%link-icon {
-    content: '\E051';
-    cursor: pointer;
-    font-family: 'Glyphicons Regular';
-    font-weight: normal;
-    vertical-align: middle;
-    width: 1.2em;
-    z-index: 1;
-}
-
 .heading-link {
     a {
         color: inherit;
@@ -15,8 +5,10 @@
         text-decoration: none;
 
         &::after {
-            @extend %link-icon;
-            padding-left: .2em;
+            @include icon($content: "#", $font-family: inherit);
+            margin-left: $grid-gutter-width / 4;
+            cursor: pointer;
+            z-index: 1;
         }
 
         @media (min-width: $screen-sm-min) {
@@ -31,7 +23,8 @@
 
             &::after {
                 display: none;
-                left: -1.2em;
+                left: -1em;
+                margin-left: 0;
                 position: absolute;
             }
         }
