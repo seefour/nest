@@ -1,0 +1,50 @@
+// BASE FIGURE STRUCTURE
+// <figure class="figure">
+//   <a class="figure__link" href="">
+//     <img class="figure__image" src="" alt="" />
+//   </a>
+//   <figcaption class="figure__caption">...</figcaption>
+// </figure>
+
+// BLOCK figure
+.figure {
+    font-family: $font-family-sans-serif;
+    margin-bottom: 1.5rem;
+    width: 100%;
+
+    &__image,
+    &__link,
+    &__thumbnail,
+    &__video {
+        display: block;
+        margin-bottom: .5rem;
+        width: 100%;
+    }
+
+    &__caption {
+        font-size: 1.4rem;
+
+        &-title {
+            font-family: "Rubik", sans-serif;
+            font-weight: 700;
+            padding-right: .5rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__title {
+        &--main {
+            font-family: "Rubik", sans-serif;
+            font-size: .9em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        &--sub {
+            font-size: $font-size-h3;
+        }
+    }
+
+
+// MODIFIED
+
