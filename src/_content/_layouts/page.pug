@@ -1,0 +1,14 @@
+extends _layouts/base
+
+append config
+    - title = ""
+    - position = ""
+    - body.class = null
+    - body.type = null
+    - custom.css = false
+    - custom.js = false
+
+block content
+    main
+        .row
+            section.document-section(data-level="0")
