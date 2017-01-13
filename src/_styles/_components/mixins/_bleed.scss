@@ -1,0 +1,25 @@
+@mixin bleed($variant) {
+    $width: 100vw;
+    @if $variant != "full" {
+        $width: calc(50vw + 50% - #{$grid-gutter-width});
+    }
+
+    position: relative;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        width: $width;
+        height: 100%;
+        content: "";
+        z-index: -1;
+
+        @if $variant == "right" {
+            right: 50%;
+            margin-right: -50vw;
+        } @else {
+            left: 50%;
+            margin-left: -50vw;
+        }
+    }
+}
