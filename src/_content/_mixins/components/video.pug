@@ -1,0 +1,21 @@
+mixin video-el(item)
+    video(
+        id= item.id,
+        class= `${item.root}__video`,
+        poster= `images/${item.poster}`,
+        controls= item.controls||"controls"
+        )
+        each source in item.sources
+            source(
+                src= source.src,
+                type= source.type
+                )
+        each track in item.tracks
+            - let location = (track.src.startsWith('http')) ? track.src : `captions/${track.src}`
+            track(
+                src= location,
+                kind= track.kind||"captions",
+                srclang= track.srclang||"en",
+                label= track.label||"English"
+                )
+        | Your browser does not support the #[code video] element.
