@@ -1,0 +1,47 @@
+////
+/// @author Evan Yamanishi
+////
+
+/// Generate part colors based on parent [data-position]
+///
+/// @param {String} $property [background-color] - Any colorable property
+/// @param {Map} $part-colors [$parts] - A SASS map containing part colors
+/// @see $parts
+///
+/// @example scss - Default Usage: Change background-color
+///    $parts: (
+///        1: #ff7f50,
+///        2: #6495ed
+///    )
+///    .block-with-part-color-background {
+///        @include part-color();
+///    }
+///
+/// @example css - Default Usage CSS Output
+///    [data-position=1] .block-with-part-color-background {
+///        background-color: #ff7f50;
+///    }
+///    [data-position=2] .block-with-part-color-background {
+///        background-color: #6495ed;
+///    }
+///
+/// @example scss - Custom Usage: Change (font) color
+///    .block-with-part-color-text {
+///        @include part-color(color);
+///    }
+///
+/// @example css - Custom Usage CSS Output
+///    [data-position=1] .block-with-part-color-text {
+///        color: #ff7f50;
+///    }
+///    [data-position=2] .block-with-part-color-text {
+///        color: #6495ed;
+///    }
+
+@mixin part-color($property: background-color, $part-colors: $parts) {
+    @each $n, $color in $part-colors {
+        [data-position^="#{$n}"] & {
+            #{$property}: $color;
+        }
+    }
+}
