@@ -1,0 +1,54 @@
+@mixin make-arrow($direction: right, $angle: 45deg, $stroke: $gray-base, $fill: transparent, $border-width: 1px) {
+    @if $direction == "left" {
+        $angle: -$angle;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        content: "";
+        background-color: $fill;
+        border-#{$direction}: $border-width solid $stroke;
+        z-index: -1;
+    }
+
+    &::before {
+        top: 0;
+        transform: skew($angle);
+        transform-origin: top #{$direction};
+    }
+
+    &::after {
+        bottom: 0;
+        transform: skew(-$angle);
+        transform-origin: bottom #{$direction};
+    }
+}
+
+@mixin pull-arrow($direction, $arrow-width: $grid-gutter-width) {
+    $opposite: "right";
+    @if $direction == "right" {
+        $opposite: "left"
+    }
+
+    padding-#{$opposite}: $arrow-width;
+
+    @include bleed($direction);
+
+    &::before {
+        border: 1px $gray-base;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        #{$opposite}: $arrow-width;
+        @include make-arrow($direction: $opposite, $angle: 30deg);
+    }
+}
