@@ -1,3 +1,24 @@
+// scss-lint:disable ImportantRule
+
+////
+/// @author Evan Yamanishi
+////
+
+/// A part map should be used when element colors are keyed to a large book division (part)
+/// @group Book
+/// @type Map
+$parts: (
+    1: #ffeb2c,
+    2: #c3d34e,
+    3: #11ccfa
+);
+
+/// Font-smoothing dpi specifies the break-point for when font smoothing should be enabled.
+///
+/// @group Typography
+/// @type String
+$font-smoothing: 175dpi;
+
 /// Animation timings for common transition types
 /// @group Animation
 /// @type Map
@@ -31,3 +52,9 @@ $transition-exit: all map-get($motion-timing, exit) map-get($motion-duration, ex
     }
 }
 
+// photoswipe-ui custom variables
+$pswp-root: "pswp";
+$btn-size: 44px;
+
+// modals
+$modal-shadow: 0 2px 4px rgba($gray-base, .15), 0 0 0 1px rgba($gray-base, .03);
