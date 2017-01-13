@@ -1,0 +1,13 @@
+mixin title-el(item)
+    div(
+        class= `${item.root}__title`
+        )
+        if (item.subtitle)
+            div(
+                class= `${item.root}__title--main`
+                )!= item.title
+            div(
+                class= `${item.root}__title--sub`
+                )!= item.subtitle
+        else
+            != item.title
