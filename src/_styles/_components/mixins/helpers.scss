@@ -1,0 +1,18 @@
+// functions for easier map access
+@function duration($key) {
+    @if map-has-key($motion-duration, $key) {
+        @return map-get($motion-duration, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $motion-duration.";
+    @return null;
+}
+
+@function timing($key) {
+    @if map-has-key($motion-timing, $key) {
+        @return map-get($motion-timing, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $motion-timing.";
+    @return null;
+}
